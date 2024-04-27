@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+[x-cloak] {
+    display: none;
+}
+.boton-inicio {
+    @apply bg-azul hover:bg-blue-700 border-2 border-white shadow-xl text-white font-bold py-4 px-6 rounded-xl mx-3 shadow-black;
+}
+
+.text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 2, 1);
+}
