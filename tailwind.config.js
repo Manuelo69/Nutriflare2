@@ -22,6 +22,9 @@ export default {
                 'verde': '#43D32D',
                 'rojo': '#FF4B3E'
             },
+            height: {
+                '750px': '600px',
+              },
         },
     },
 
