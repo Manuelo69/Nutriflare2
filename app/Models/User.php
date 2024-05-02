@@ -23,6 +23,11 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
+    public function getRouteKey()
+    {
+        return 'slug';
+    }
     protected $fillable = [
         'name',
         'email',
