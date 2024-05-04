@@ -69,4 +69,33 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function rutinas()
+    {
+        return $this->hasMany(Rutina::class);
+    }
+
+    /**
+     * Obtiene el objetivo asociado con el usuario.
+     */
+    public function objetivo()
+    {
+        return $this->hasOne(Objetivo::class);
+    }
+
+    /**
+     * Obtiene el progreso asociado con el usuario.
+     */
+    public function progreso()
+    {
+        return $this->hasOne(Progreso::class);
+    }
+
+    /**
+     * Obtiene las dietas asociadas con el usuario.
+     */
+    public function dietas()
+    {
+        return $this->hasMany(Dieta::class);
+    }
 }

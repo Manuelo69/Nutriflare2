@@ -8,34 +8,103 @@
     <div class="py-12 flex gap-4">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg flex flex-row gap-8 p-5">
-                <legend class="text-center rounded-xl p-6 font-custom font-bold text-xl ">Rutinas
-                    <div class="flex flex-col justify-evenly  h-750px w-80 bg-azul rounded-xl shadow-lg shadow-black">
-                        <p class="link_inicio">Crear rutina</p>
-                        <hr>
-                        <p class="link_inicio">Ver rutina</p>
-                        <hr>
-                        <p class="link_inicio">Desactivar rutinas</p>
-                        <hr>
-                        <p class="link_inicio">Ver rutinas antiguas</p>
+                <legend class="text-center rounded-xl p-6 font-custom font-bold text-xl ">Objetivo
+                    <div class="flex flex-col h-700px w-80 bg-rojo rounded-xl shadow-lg shadow-black">
+                        <form action="#" class="flex flex-col items-center" method="POST">
+                            @csrf
+                            @if (Auth::user()->objetivo != null)
+                                @method('put')
+                            @endif
+                            <label for="altura_objetivo" class="text-left font-normal mt-3">Altura</label>
+                            <input type="text" name="altura_objetivo" id="altura_objetivo"
+                                class="rounded-xl w-72 h-8 border-2 mb-2">
+                            <label for="peso_objetivo" class="text-center font-normal mt-3">Peso</label>
+                            <input type="text" name="peso_objetivo" id="peso_objetivo"
+                                class="rounded-xl w-72 h-8 border-2 mb-2">
+                            <label for="grasa_objetivo" class="text-center font-normal mt-3">Grasa corporal</label>
+                            <input type="text" name="grasa_objetivo" id="grasa_objetivo"
+                                class="rounded-xl w-72 h-8 border-2 mb-2">
+                            <label for="min_cardio_objetivo" class="text-center font-normal mt-3">Minutos cardio</label>
+                            <input type="text" name="min_cardio_objetivo" id="min_cardio_objetivo"
+                                class="rounded-xl w-72 h-8 border-2 mb-2">
+                            <label for="horas_sueño_objetivo" class="text-center font-normal mt-3">Horas de
+                                sueño</label>
+                            <input type="text" name="horas_sueño_objetivo" id="horas_sueño_objetivo"
+                                class="rounded-xl w-72 h-8 border-2 mb-2">
+                            <label for="minutos_sueño_objetivo" class="text-center font-normal mt-3">Minutos de
+                                sueño</label>
+                            <input type="text" name="minutos_sueño_objetivo" id="minutos_sueño_objetivo"
+                                class="rounded-xl w-72 h-8 border-2 mb-2">
+                            <label for="IMC_objetivo" class="text-center font-normal mt-3">IMC</label>
+                            <input type="text" name="IMC_objetivo" id="IMC_objetivo"
+                                class="rounded-xl w-72 h-8 border-2 mb-2">
+                            <button type="submit" class="boton-progreso">
+                                {{ Auth::user()->progreso != null ? 'Actualizar objetivo' : 'Definir objetivo' }}
+                            </button>
+                        </form>
                     </div>
                 </legend>
-                <legend class="text-center rounded-xl p-6 font-custom font-bold text-xl"> Progresion
-                    <div class="flex flex-col justify-evenly h-750px w-80 bg-rojo rounded-xl shadow-lg shadow-black">
-                        <a href={{ route('progresos.index', ['user' => Auth::user()]) }} class="link_inicio">Definir
-                            progreso</a>
-                        <hr>
-                        <p class="link_inicio">Ver ultimo progreso</p>
+                <legend class="text-center rounded-xl p-6 font-custom font-bold text-xl"> Nuevo
+                    <div class="flex flex-col h-700px w-80 bg-rojo rounded-xl shadow-lg shadow-black">
+                        <form action="#" class="flex flex-col items-center" method="POST">
+                            @csrf
+                            <label for="altura" class="text-left font-normal mt-3">Altura</label>
+                            <input type="text" name="altura" id="altura"
+                                class="rounded-xl w-72 h-8 border-2 mb-2">
+                            <label for="peso" class="text-center font-normal mt-3">Peso</label>
+                            <input type="text" name="peso" id="peso"
+                                class="rounded-xl w-72 h-8 border-2 mb-2">
+                            <label for="grasa" class="text-center font-normal mt-3">Grasa corporal</label>
+                            <input type="text" name="grasa" id="grasa"
+                                class="rounded-xl w-72 h-8 border-2 mb-2">
+                            <label for="min_cardio" class="text-center font-normal mt-3">Minutos cardio</label>
+                            <input type="text" name="min_cardio" id="min_cardio"
+                                class="rounded-xl w-72 h-8 border-2 mb-2">
+                            <label for="horas_sueño" class="text-center font-normal mt-3">Horas de sueño</label>
+                            <input type="text" name="horas_sueño" id="horas_sueño"
+                                class="rounded-xl w-72 h-8 border-2 mb-2">
+                            <label for="min_sueño" class="text-center font-normal mt-3">Minutos de
+                                sueño</label>
+                            <input type="text" name="min_sueño" id="min_sueño"
+                                class="rounded-xl w-72 h-8 border-2 mb-2">
+                            <label for="IMC" class="text-center font-normal mt-3">IMC</label>
+                            <input type="text" name="IMC" id="IMC"
+                                class="rounded-xl w-72 h-8 border-2 mb-2">
+                            <button type="submit" class="boton-progreso">
+                                {{ Auth::user()->progreso != null ? 'Actualizar progreso' : 'Definir progreso' }}
+                            </button>
+                        </form>
                     </div>
                 </legend>
-                <legend class="text-center rounded-xl p-6 font-custom font-bold text-xl"> Alimentacion
-                    <div class= "flex flex-col justify-evenly  h-750px w-80 bg-verde rounded-xl shadow-lg shadow-black">
-                        <p class="link_inicio">Crear plan de alimentacion</p>
-                        <hr>
-                        <p class="link_inicio">Ver planes de alimentacion</p>
-                        <hr>
-                        <p class="link_inicio">Desactivar planes de alimentacion </p>
-                        <hr>
-                        <p class="link_inicio">Ver planes de alimentacion antiguas</p>
+                <legend class="text-center rounded-xl p-6 font-custom font-bold text-xl"> Ultimo progreso
+                    <div class= "flex flex-col h-700px w-80 bg-rojo rounded-xl shadow-lg shadow-black">
+                        <form action="#" class="flex flex-col items-center" method="POST">
+                            @csrf
+                            <label for="altura" class="text-left font-normal mt-3">Altura</label>
+                            <input type="text" name="altura" id="altura"
+                                class="rounded-xl w-72 h-8 border-2 mb-2">
+                            <label for="peso" class="text-center font-normal mt-3">Peso</label>
+                            <input type="text" name="peso" id="peso"
+                                class="rounded-xl w-72 h-8 border-2 mb-2">
+                            <label for="grasa" class="text-center font-normal mt-3">Grasa corporal</label>
+                            <input type="text" name="grasa" id="grasa"
+                                class="rounded-xl w-72 h-8 border-2 mb-2">
+                            <label for="min_cardio" class="text-center font-normal mt-3">Minutos cardio</label>
+                            <input type="text" name="min_cardio" id="min_cardio"
+                                class="rounded-xl w-72 h-8 border-2 mb-2">
+                            <label for="horas_sueño" class="text-center font-normal mt-3">Horas de sueño</label>
+                            <input type="text" name="horas_sueño" id="horas_sueño"
+                                class="rounded-xl w-72 h-8 border-2 mb-2">
+                            <label for="min_sueño" class="text-center font-normal mt-3">Minutos de
+                                sueño</label>
+                            <input type="text" name="min_sueño" id="min_sueño"
+                                class="rounded-xl w-72 h-8 border-2 mb-2">
+                            <label for="IMC" class="text-center font-normal mt-3">IMC</label>
+                            <input type="text" name="IMC" id="IMC"
+                                class="rounded-xl w-72 h-8 border-2 mb-2">
+                            <button type="submit" class="boton-progreso">Definir
+                                objetivo</button>
+                        </form>
                     </div>
                 </legend>
             </div>

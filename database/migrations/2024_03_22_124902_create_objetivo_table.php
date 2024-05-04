@@ -18,6 +18,7 @@ return new class extends Migration {
             $table->integer('imc')->nullable();
             $table->integer('minutos_cardio')->nullable();
             $table->integer('horas_sueño')->nullable();
+            $table->integer('minutos_sueño')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
