@@ -9,11 +9,13 @@ Route::get('/', [InicioController::class, 'inicio']);
 
 Route::get('/progreso/{user}', [ProgresoController::class, 'index'])->name('progresos.index');
 
-Route::post('/progreso/{user}', [ProgresoController::class, 'store'])->name('progreso.store');
+Route::get('/objetivo/{user}/crear', [ObjetivoController::class, 'create'])->name('objetivo.create');
 
-Route::post('/progreso/{user}/2', [ObjetivoController::class, 'store'])->name('objetivo.store');
+Route::get('/progreso/{user}/crear', [ProgresoController::class, 'create'])->name('progresos.create');
 
+Route::post('/progreso/{user}/crear', [ProgresoController::class, 'store'])->name('progreso.store');
 
+Route::post('/objetivo/{user}/crear', [ObjetivoController::class, 'store'])->name('objetivo.store');
 
 
 Route::middleware([

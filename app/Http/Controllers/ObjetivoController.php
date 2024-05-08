@@ -22,17 +22,22 @@ class ObjetivoController extends Controller
             $objetivo->user_id = $userId;
         }
         $objetivo->fill([
-            'altura' => $request->altura,
+            'altura' => $request->altura_objetivo,
             'peso' => $request->peso_objetivo,
-            'grasa_corporal' => $request->grasa_objetivo,
-            'minutos_cardio' => $request->min_cardio_objetivo,
+            'grasa_corporal' => $request->grasa_corporal_objetivo,
+            'minutos_cardio' => $request->minutos_cardio_objetivo,
             'horas_sueño' => $request->horas_sueño_objetivo,
-            'minutos_sueño' => $request->min_sueño_objetivo,
+            'minutos_sueño' => $request->minutos_sueño_objetivo,
             'imc' => $request->IMC_objetivo,
         ]);
         // Guarda el progreso en la base de datos
         $objetivo->save();
         return redirect()->back()->with('success', 'Objetivo actualizado exitosamente!');
+    }
+
+    public function create()
+    {
+        return view('objetivo.create');
     }
 
 }

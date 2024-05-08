@@ -58,6 +58,11 @@ class ProgresoController extends Controller
 
     }
 
+    public function create()
+    {
+        return view('progresos.create');
+    }
+
 
 
     /**
