@@ -10,7 +10,7 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('progresos', function (Blueprint $table) {
+        Schema::create('seguimientos', function (Blueprint $table) {
             $table->id();
             $table->integer('altura');
             $table->integer('peso');
@@ -20,6 +20,7 @@ return new class extends Migration {
             $table->integer('horas_sueño')->nullable();
             $table->integer('minutos_sueño')->nullable();
             $table->integer('porcentaje_progreso')->nullable();
+            $table->enum('tipo', ['base', 'objetivo', 'seguimiento']);
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
@@ -31,6 +32,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('progreso');
+        Schema::dropIfExists('seguimientos');
     }
 };

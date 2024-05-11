@@ -76,19 +76,11 @@ class User extends Authenticatable
     }
 
     /**
-     * Obtiene el objetivo asociado con el usuario.
+     * Obtiene el seguimiento asociado con el usuario.
      */
-    public function objetivo()
+    public function seguimiento()
     {
-        return $this->hasOne(Objetivo::class);
-    }
-
-    /**
-     * Obtiene el progreso asociado con el usuario.
-     */
-    public function progreso()
-    {
-        return $this->hasOne(Progreso::class);
+        return $this->hasMany(Seguimiento::class);
     }
 
     /**
