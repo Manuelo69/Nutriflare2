@@ -21,10 +21,11 @@
                 </legend>
                 <legend class="text-center rounded-xl p-6 font-custom font-bold text-xl"> Progresion
                     <div class="flex flex-col justify-evenly h-750px w-80 bg-rojo rounded-xl shadow-lg shadow-black">
-                        <a href={{ route('progresos.index', ['user' => Auth::user()]) }} class="link_inicio">Definir
+                        <a href={{ route('seguimiento.index', ['user' => Auth::user()]) }} class="link_inicio">Definir
                             progreso</a>
                         <hr>
-                        <p class="link_inicio">Ver ultimo progreso</p>
+                        <a href="{{ route('seguimiento.show2', ['user' => Auth::user()]) }}" class="link_inicio">Ver
+                            ultimo progreso</a>
                     </div>
                 </legend>
                 <legend class="text-center rounded-xl p-6 font-custom font-bold text-xl"> Alimentacion

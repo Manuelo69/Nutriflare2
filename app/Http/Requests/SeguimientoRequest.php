@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ProgresoRequest extends FormRequest
+class SeguimientoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -53,6 +53,8 @@ class ProgresoRequest extends FormRequest
             'min_sueño.min' => 'El campo minutos de sueño no puede ser menor a 0.',
             'IMC.required' => 'El campo IMC es obligatorio.',
             'IMC.numeric' => 'El campo IMC debe ser numérico.',
+            'tipo.required' => 'El campo tipo es obligatorio.',
+            'tipo.in' => 'El campo tipo no es válido, los valores han de ser seguimiento, objetivo o tipo',
         ];
 
     }

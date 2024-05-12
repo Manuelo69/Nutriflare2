@@ -16,6 +16,8 @@ return new class extends Migration {
             $table->foreign('rutina_id')->references('id')->on('rutinas')->onDelete('cascade');
             $table->unsignedBigInteger('ejercicio_id');
             $table->foreign('ejercicio_id')->references('id')->on('ejercicios')->onDelete('cascade');
+            $table->integer('series');
+            $table->integer('repeticiones');
             $table->timestamps();
         });
     }

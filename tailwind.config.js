@@ -25,6 +25,8 @@ export default {
             height: {
                 '750px': '600px',
                 '700px': '650px',
+                '800px': '800px',
+                '780px': '780px',
               },
         },
     },
