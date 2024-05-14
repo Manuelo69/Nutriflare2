@@ -3,12 +3,15 @@
 use App\Http\Controllers\InicioController;
 use App\Http\Controllers\ObjetivoController;
 use App\Http\Controllers\ProgresoController;
+use App\Http\Controllers\RutinaController;
 use App\Http\Controllers\SeguimientoController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [InicioController::class, 'inicio']);
 
 Route::get('/seguimiento/{user}', [SeguimientoController::class, 'index'])->name('seguimiento.index');
+
+Route::get('/rutinas/crear', [RutinaController::class, 'create'])->name('rutina.create');
 
 Route::get('/seguimiento/{user}/crear', [SeguimientoController::class, 'create'])->name('seguimiento.create');
 

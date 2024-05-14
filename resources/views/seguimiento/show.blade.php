@@ -54,13 +54,6 @@
                             {{ number_format($progresoCardio, 2) }}%
                         </div>
                         <div>
-                            Progreso Altura
-                            <meter class="w-full h-8 " min="0" max="100" low="50"
-                                value="{{ $progresoAltura }}">
-                            </meter>
-                            {{ number_format($progresoAltura, 2) }}%
-                        </div>
-                        <div>
                             Progreso Sueño
                             <meter class="w-full h-8 " min="0" max="100" low="50"
                                 value="{{ $progresoSueno }}">

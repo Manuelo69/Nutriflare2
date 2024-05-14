@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg flex flex-row gap-8 p-5">
                 <legend class="text-center rounded-xl p-6 font-custom font-bold text-xl ">Rutinas
                     <div class="flex flex-col justify-evenly  h-750px w-80 bg-azul rounded-xl shadow-lg shadow-black">
-                        <p class="link_inicio">Crear rutina</p>
+                        <a href="{{ route('rutina.create') }}" class="link_inicio">Crear rutina</a>
                         <hr>
                         <p class="link_inicio">Ver rutina</p>
                         <hr>
