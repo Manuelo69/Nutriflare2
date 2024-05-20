@@ -9,6 +9,13 @@ class Rutina extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['dia_semana', 'activa', 'user_id'];
+
+    public function ejerciciosRutina()
+    {
+        return $this->hasMany(EjerciciosRutina::class);
+    }
+
     public function usuario()
     {
         return $this->belongsTo(User::class);

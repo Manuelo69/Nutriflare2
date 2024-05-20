@@ -23,7 +23,7 @@ class EjerciciosSeeder extends Seeder
                 $e->musculo = $ejercicio['musculo'];
                 $e->aprobado = $ejercicio['aprobado'];
                 $e->explicacion = $ejercicio['explicacion'];
-                $e->imagen = "public/assets/{$ejercicio['imagen']}";
+                $e->imagen = "{$ejercicio['imagen']}";
                 $e->save();
             } catch (Exception $e) {
                 $this->command->error('Error al insertar datos: ' . $e->getMessage());

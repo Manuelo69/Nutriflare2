@@ -13,6 +13,12 @@ Route::get('/seguimiento/{user}', [SeguimientoController::class, 'index'])->name
 
 Route::get('/rutinas/crear', [RutinaController::class, 'create'])->name('rutina.create');
 
+Route::post('/rutina/guardar', [RutinaController::class, 'store'])->name('rutina.store');
+
+Route::get('/rutinas/crear/filtrar', [RutinaController::class, 'filtrar'])->name('rutina.filtrar');
+
+Route::get('/ejercicio/{id}', [RutinaController::class, 'show'])->name('rutina.show');
+
 Route::get('/seguimiento/{user}/crear', [SeguimientoController::class, 'create'])->name('seguimiento.create');
 
 Route::get('/seguimiento/{user}/total', [SeguimientoController::class, 'show'])->name('seguimiento.show');
@@ -24,10 +30,6 @@ Route::get('/seguimiento/{user}/editar', [SeguimientoController::class, 'edit'])
 Route::post('/seguimiento/{user}/', [SeguimientoController::class, 'store'])->name('seguimiento.store');
 
 Route::post('/seguimiento/{user}/crear', [SeguimientoController::class, 'calcularProgreso'])->name('seguimiento.calculo');
-
-
-
-
 
 Route::middleware([
     'auth:sanctum',
