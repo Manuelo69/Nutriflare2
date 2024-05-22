@@ -52,11 +52,18 @@ class RutinaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+
     public function store(Request $request)
     {
+        // Desactivar cualquier rutina activa en el mismo día
+        Rutina::where('dia_semana', $request->diaSemana)
+            ->where('user_id', auth()->id())
+            ->update(['activa' => false]);
+
         $rutina = new Rutina();
-        $rutina->dia_semana = $request->dia_semana;  // Debes ajustar esto según tu formulario
+        $rutina->dia_semana = $request->diaSemana;
         $rutina->user_id = auth()->id();
+        $rutina->activa = true;
         $rutina->save();
 
         foreach ($request->ejercicios as $ejercicio) {
@@ -68,8 +75,11 @@ class RutinaController extends Controller
             ]);
         }
 
-        return response()->json(['success' => true]);
+        return response()->json(['success' => true, 'rutina_id' => $rutina->id]);
+        // return redirect()->route('rutina.show', $rutina->id);
     }
+
+
 
     /**
      * Display the specified resource.

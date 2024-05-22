@@ -55,24 +55,28 @@
         <div class="w-full lg:w-1/3">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-5 h-full flex flex-col">
                 <!-- Selección del día de la semana -->
-                <div class="mb-4">
-                    <label for="diaSemana" class="block text-sm font-medium text-gray-700 rounded-xl">Día de la
-                        semana</label>
-                    <select id="diaSemana" class="border p-2 mt-1 w-full rounded-xl">
-                        <option value="Lunes">Lunes</option>
-                        <option value="Martes">Martes</option>
-                        <option value="Miércoles">Miércoles</option>
-                        <option value="Jueves">Jueves</option>
-                        <option value="Viernes">Viernes</option>
-                        <option value="Sábado">Sábado</option>
-                        <option value="Domingo">Domingo</option>
-                    </select>
-                    <button onclick="guardarRutina()" class="bg-green-500 text-white rounded px-4 py-2 mt-4">Guardar
-                        Rutina</button>
-                </div>
-                <!-- Previsualización de la rutina -->
-                <h3 class="text-xl font-semibold mb-4">Ejercicios Añadidos</h3>
-                <div id="ejercicios-añadidos-container" class="flex flex-wrap gap-4 overflow-y-auto items-center"></div>
+                <form id="formRutina" method="POST" action="{{ route('rutina.store') }}">
+                    @csrf
+                    <div class="mb-4">
+                        <label for="diaSemana" class="block text-sm font-medium text-gray-700 rounded-xl">Día de la
+                            semana</label>
+                        <select id="diaSemana" name="diaSemana" class="border p-2 mt-1 w-full rounded-xl">
+                            <option value="Lunes">Lunes</option>
+                            <option value="Martes">Martes</option>
+                            <option value="Miércoles">Miércoles</option>
+                            <option value="Jueves">Jueves</option>
+                            <option value="Viernes">Viernes</option>
+                            <option value="Sábado">Sábado</option>
+                            <option value="Domingo">Domingo</option>
+                        </select>
+                        <button type="submit" class="bg-green-500 text-white rounded px-4 py-2 mt-4">Guardar
+                            Rutina</button>
+                    </div>
+                    <!-- Previsualización de la rutina -->
+                    <h3 class="text-xl font-semibold mb-4">Ejercicios Añadidos</h3>
+                    <div id="ejercicios-añadidos-container" class="flex flex-wrap gap-4 overflow-y-auto items-center">
+                    </div>
+                </form>
 
             </div>
         </div>
@@ -139,7 +143,7 @@
                     document.getElementById('modalNombre').textContent = data.nombre_ejercicio;
                     document.getElementById('modalExplicacion').textContent = data.explicacion;
                     document.getElementById('modalImagen').innerHTML =
-                        `<img src="${data.imagen}" alt="${data.nombre_ejercicio}" class="mx-auto">`;
+                        `<img src="/assets/imagenes/${data.imagen}" class="w-full h-full object-cover">`;
                     document.getElementById('modalDetalles').classList.remove('hidden');
                 });
         }
@@ -163,12 +167,13 @@
                 'box-border', 'justify-center', 'text-center');
             ejercicioDiv.setAttribute('data-id', id);
             ejercicioDiv.innerHTML = `
-                <h3 class="text-lg font-semibold">${nombre}</h3>
-                <p class="text-gray-500">${musculo}</p>
-                <input type="number" class="border p-1 mt-2 w-full rounded-xl flex" placeholder="Series" min="1">
-                <input type="number" class="border p-1 mt-2 w-full rounded-xl flex" placeholder="Repeticiones" min="1">
-                <button onclick="eliminarEjercicio(${id})" class="bg-red-500 text-white rounded px-2 py-1 mt-2">Eliminar</button>
-            `;
+        <h3 class="text-lg font-semibold">${nombre}</h3>
+        <p class="text-gray-500">${musculo}</p>
+        <input type="hidden" name="ejercicios[${id}][id]" value="${id}">
+        <input type="number" name="ejercicios[${id}][series]" class="border p-1 mt-2 w-full rounded-xl flex" placeholder="Series" min="1" required>
+        <input type="number" name="ejercicios[${id}][repeticiones]" class="border p-1 mt-2 w-full rounded-xl flex" placeholder="Repeticiones" min="1" required>
+        <button type="button" onclick="eliminarEjercicio(${id})" class="bg-red-500 text-white rounded px-2 py-1 mt-2">Eliminar</button>
+    `;
             ejerciciosAñadidosContainer.appendChild(ejercicioDiv);
         }
 
