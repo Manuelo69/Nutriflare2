@@ -1,8 +1,8 @@
 @foreach ($ejercicios as $ejercicio)
-    <div class="flex flex-col items-center border p-2">
+    <div class="flex flex-col items-center border p-2 justify-center text-center">
         <img src="{{ asset('assets/imagenes/' . $ejercicio->imagen) }}" alt="{{ $ejercicio->imagen }}"
             class="w-20 h-20 object-cover rounded">
-        <div class="mt-2 text-center">
+        <div class="mt-2 flex flex-col justify-center w-full">
             <h3 class="text-lg font-semibold truncate">{{ $ejercicio->nombre_ejercicio }}</h3>
             <p class="text-gray-500">{{ $ejercicio->musculo }}</p>
         </div>

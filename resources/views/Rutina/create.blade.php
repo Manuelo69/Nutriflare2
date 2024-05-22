@@ -16,7 +16,7 @@
         </div>
     @endif
 
-    <div class="py-12 flex flex-col lg:flex-row gap-4">
+    <div class="py-12 flex flex-col lg:flex-row gap-4 px-2">
         <div class="w-full lg:w-2/3 mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-5 h-full">
                 <!-- Filtros -->
@@ -58,7 +58,7 @@
                 <div class="mb-4">
                     <label for="diaSemana" class="block text-sm font-medium text-gray-700 rounded-xl">Día de la
                         semana</label>
-                    <select id="diaSemana" class="border p-2 mt-1 w-full">
+                    <select id="diaSemana" class="border p-2 mt-1 w-full rounded-xl">
                         <option value="Lunes">Lunes</option>
                         <option value="Martes">Martes</option>
                         <option value="Miércoles">Miércoles</option>
@@ -160,7 +160,7 @@
             }
             const ejercicioDiv = document.createElement('div');
             ejercicioDiv.classList.add('border', 'p-4', 'm-2', 'flex', 'flex-col', 'items-center', 'w-full', 'lg:w-1/4',
-                'box-border', 'justify-center', );
+                'box-border', 'justify-center', 'text-center');
             ejercicioDiv.setAttribute('data-id', id);
             ejercicioDiv.innerHTML = `
                 <h3 class="text-lg font-semibold">${nombre}</h3>
