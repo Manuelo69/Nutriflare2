@@ -6,11 +6,11 @@
     display: none;
 }
 .boton-inicio {
-    @apply bg-azul hover:bg-blue-700 border-2 border-white shadow-xl text-white font-bold py-4 px-6 rounded-xl mx-3 shadow-black;
+    @apply bg-azul hover:bg-blue-700 border-2 border-white shadow-xl text-white font-bold py-4 px-6 rounded-xl mx-3 ;
 }
 
 .boton-progreso {
-    @apply bg-red-400 mt-3 hover:bg-red-800 border-2 border-white shadow-lg text-white font-bold py-3 px-4 rounded-xl mx-3 shadow-black;
+    @apply bg-red-400 mt-3 hover:bg-red-800 border-2 border-white shadow-lg text-white font-bold py-3 px-4 rounded-xl mx-3 ;
 }
 
 .link_inicio{

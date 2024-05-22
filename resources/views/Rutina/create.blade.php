@@ -20,10 +20,10 @@
         <div class="w-full lg:w-2/3 mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-5 h-full">
                 <!-- Filtros -->
-                <div class="flex flex-col items-center mb-4">
-                    <input type="text" id="filtroNombre" class="border p-2 m-2 w-full"
+                <div class="flex flex-row justify-center items-center mb-4">
+                    <input type="text" id="filtroNombre" class="border p-2 m-2 w-60 rounded-xl"
                         placeholder="Nombre del ejercicio">
-                    <select id="filtroMusculo" class="border p-2 m-2 w-full">
+                    <select id="filtroMusculo" class="border p-2 m-2 w-60 rounded-xl">
                         <option value="">Todos los músculos</option>
                         <option value="pierna">Pierna</option>
                         <option value="triceps">Tríceps</option>
@@ -56,7 +56,8 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-5 h-full flex flex-col">
                 <!-- Selección del día de la semana -->
                 <div class="mb-4">
-                    <label for="diaSemana" class="block text-sm font-medium text-gray-700">Día de la semana</label>
+                    <label for="diaSemana" class="block text-sm font-medium text-gray-700 rounded-xl">Día de la
+                        semana</label>
                     <select id="diaSemana" class="border p-2 mt-1 w-full">
                         <option value="Lunes">Lunes</option>
                         <option value="Martes">Martes</option>
@@ -66,12 +67,13 @@
                         <option value="Sábado">Sábado</option>
                         <option value="Domingo">Domingo</option>
                     </select>
+                    <button onclick="guardarRutina()" class="bg-green-500 text-white rounded px-4 py-2 mt-4">Guardar
+                        Rutina</button>
                 </div>
                 <!-- Previsualización de la rutina -->
                 <h3 class="text-xl font-semibold mb-4">Ejercicios Añadidos</h3>
                 <div id="ejercicios-añadidos-container" class="flex flex-wrap gap-4 overflow-y-auto items-center"></div>
-                <button onclick="guardarRutina()" class="bg-green-500 text-white rounded px-4 py-2 mt-4">Guardar
-                    Rutina</button>
+
             </div>
         </div>
     </div>
@@ -157,14 +159,14 @@
                 return;
             }
             const ejercicioDiv = document.createElement('div');
-            ejercicioDiv.classList.add('border', 'p-2', 'm-2', 'flex', 'flex-col', 'items-center', 'w-full', 'lg:w-1/4',
-                'box-border');
+            ejercicioDiv.classList.add('border', 'p-4', 'm-2', 'flex', 'flex-col', 'items-center', 'w-full', 'lg:w-1/4',
+                'box-border', 'justify-center', );
             ejercicioDiv.setAttribute('data-id', id);
             ejercicioDiv.innerHTML = `
                 <h3 class="text-lg font-semibold">${nombre}</h3>
                 <p class="text-gray-500">${musculo}</p>
-                <input type="number" class="border p-1 mt-2 w-full" placeholder="Series" min="1">
-                <input type="number" class="border p-1 mt-2 w-full" placeholder="Repeticiones" min="1">
+                <input type="number" class="border p-1 mt-2 w-full rounded-xl flex" placeholder="Series" min="1">
+                <input type="number" class="border p-1 mt-2 w-full rounded-xl flex" placeholder="Repeticiones" min="1">
                 <button onclick="eliminarEjercicio(${id})" class="bg-red-500 text-white rounded px-2 py-1 mt-2">Eliminar</button>
             `;
             ejerciciosAñadidosContainer.appendChild(ejercicioDiv);
