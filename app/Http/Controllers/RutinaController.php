@@ -108,24 +108,41 @@ class RutinaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    // RutinaController.php
+
+    public function edit($id)
     {
-        //
+        $rutina = Rutina::with('ejerciciosRutina.ejercicio')->findOrFail($id);
+        $ejercicios = Ejercicio::where('aprobado', true)->paginate(12);
+        return view('rutina.edit', compact('rutina', 'ejercicios'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+
+    public function update(Request $request, $id)
     {
-        //
+        $rutina = Rutina::findOrFail($id);
+        $rutina->dia_semana = $request->diaSemana;
+        $rutina->save();
+
+        // Eliminar ejercicios existentes
+        EjerciciosRutina::where('rutina_id', $rutina->id)->delete();
+
+        // Añadir nuevos ejercicios
+        foreach ($request->ejercicios as $ejercicio) {
+            EjerciciosRutina::create([
+                'rutina_id' => $rutina->id,
+                'ejercicio_id' => $ejercicio['id'],
+                'series' => $ejercicio['series'],
+                'repeticiones' => $ejercicio['repeticiones'],
+            ]);
+        }
+
+        return redirect()->route('rutina.show', ['user' => auth()->user()->name, 'rutina' => $request->diaSemana]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
+
+
 }

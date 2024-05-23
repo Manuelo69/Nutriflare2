@@ -20,7 +20,9 @@ Route::post('/seguimiento/{user}/crear', [SeguimientoController::class, 'calcula
 
 // Rutas de rutinas
 Route::get('/ejercicio/{id}', [RutinaController::class, 'showModal'])->name('rutina.show');
-Route::get('/rutinas/crear', [RutinaController::class, 'create'])->name('rutina.create');
+Route::get('/rutina/{id}/editar', [RutinaController::class, 'edit'])->name('rutina.edit');
+Route::put('/rutina/{id}', [RutinaController::class, 'update'])->name('rutina.update');
+Route::get('/rutina/crear', [RutinaController::class, 'create'])->name('rutina.create');
 Route::post('/rutina/guardar', [RutinaController::class, 'store'])->name('rutina.store');
 Route::get('/rutinas/crear/filtrar', [RutinaController::class, 'filtrar'])->name('rutina.filtrar');
 Route::get('/ejercicio/{user}/rutina/{rutina}', [RutinaController::class, 'show'])->name('rutina.show');

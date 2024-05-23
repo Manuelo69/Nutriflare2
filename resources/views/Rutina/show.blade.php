@@ -1,3 +1,4 @@
+<!-- show.blade.php -->
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -46,54 +47,21 @@
                                     <p class="text-gray-600">Repeticiones: {{ $ejercicioRutina->repeticiones }}</p>
                                 </div>
                                 <div class="flex justify-center mt-2">
-                                    <button class="mt-2 px-4 py-2 bg-blue-500 text-white rounded"
-                                        onclick="mostrarDetalles({{ $ejercicioRutina->ejercicio->id }})">
-                                        Mostrar detalles
-                                    </button>
+                                    <button class="mt-2 px-4 py-2 bg-red-500 text-white rounded">Eliminar</button>
                                 </div>
                             </div>
                         @endforeach
                     </div>
+
+                    <!-- Botón de edición -->
+                    <div class="flex justify-center mt-6">
+                        <a href="{{ route('rutina.edit', ['id' => $rutina->id]) }}"
+                            class="bg-yellow-500 text-white px-4 py-2 rounded">Editar Rutina</a>
+                    </div>
                 @else
-                    <p class="text-center text-gray-600 mt-4">No hay rutinas para este día.</p>
+                    <p class="text-center text-gray-600">No hay rutina activa para el día seleccionado.</p>
                 @endif
             </div>
         </div>
     </div>
-
-    <!-- Modal de detalles del ejercicio -->
-    <div id="modalDetalles" class="fixed z-10 inset-0 overflow-y-auto hidden">
-        <div class="flex items-center justify-center min-h-screen px-4 text-center">
-            <div class="fixed inset-0 transition-opacity" aria-hidden="true">
-                <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
-            </div>
-            <div
-                class="inline-block bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full">
-                <div class="bg-white p-6">
-                    <div id="modalImagen" class="mb-4 flex justify-center"></div>
-                    <h3 class="text-xl font-medium leading-6 text-gray-900" id="modalNombre"></h3>
-                    <div id="modalExplicacion" class="mt-2 text-sm text-gray-500"></div>
-                    <button id="cerrarModal" class="mt-4 bg-red-500 text-white px-4 py-2 rounded">Cerrar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function mostrarDetalles(id) {
-            fetch(`/ejercicio/${id}`)
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById('modalImagen').innerHTML =
-                        `<img src="/assets/imagenes/${data.imagen}" class="w-48 h-48 object-cover rounded" alt="${data.nombre_ejercicio}">`;
-                    document.getElementById('modalNombre').innerText = data.nombre_ejercicio;
-                    document.getElementById('modalExplicacion').innerText = data.explicacion;
-                    document.getElementById('modalDetalles').classList.remove('hidden');
-                });
-        }
-
-        document.getElementById('cerrarModal').addEventListener('click', function() {
-            document.getElementById('modalDetalles').classList.add('hidden');
-        });
-    </script>
 </x-app-layout>
