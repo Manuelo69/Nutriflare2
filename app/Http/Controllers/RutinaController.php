@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Ejercicio;
 use App\Models\EjerciciosRutina;
 use App\Models\Rutina;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class RutinaController extends Controller
@@ -75,20 +76,34 @@ class RutinaController extends Controller
             ]);
         }
 
-        return response()->json(['success' => true, 'rutina_id' => $rutina->id]);
-        // return redirect()->route('rutina.show', $rutina->id);
+        return redirect()->route('rutina.show', ['user' => auth()->user()->name, 'rutina' => $request->diaSemana]);
     }
+
 
 
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($user, $dia_semana)
+    {
+        $user = User::where('name', $user)->firstOrFail();
+        $rutina = Rutina::where('user_id', $user->id)
+            ->where('dia_semana', $dia_semana)
+            ->where('activa', true)
+            ->with('ejerciciosRutina.ejercicio')
+            ->first();
+
+        return view('rutina.show', compact('rutina', 'dia_semana', 'user'));
+    }
+
+    public function showModal(string $id)
     {
         $ejercicio = Ejercicio::findOrFail($id);
         return response()->json($ejercicio);
     }
+
+
 
     /**
      * Show the form for editing the specified resource.

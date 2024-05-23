@@ -69,13 +69,15 @@
                             <option value="Sábado">Sábado</option>
                             <option value="Domingo">Domingo</option>
                         </select>
-                        <button type="submit" class="bg-green-500 text-white rounded px-4 py-2 mt-4">Guardar
-                            Rutina</button>
+
                     </div>
                     <!-- Previsualización de la rutina -->
                     <h3 class="text-xl font-semibold mb-4">Ejercicios Añadidos</h3>
-                    <div id="ejercicios-añadidos-container" class="flex flex-wrap gap-4 overflow-y-auto items-center">
+                    <div id="ejercicios-añadidos-container"
+                        class="flex flex-wrap gap-4 overflow-y-auto items-start h-[calc(100vh-300px)]">
                     </div>
+                    <button type="submit" class="bg-green-500 text-white rounded px-4 py-2 mt-4">Guardar
+                        Rutina</button>
                 </form>
 
             </div>

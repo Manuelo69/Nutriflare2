@@ -12,7 +12,10 @@
                     <div class="flex flex-col justify-evenly  h-750px w-80 bg-azul rounded-xl shadow-lg shadow-black">
                         <a href="{{ route('rutina.create') }}" class="link_inicio">Crear rutina</a>
                         <hr>
-                        <p class="link_inicio">Ver rutina</p>
+                        <a class="link_inicio"
+                            href="{{ route('rutina.show', ['user' => Auth::user()->name, 'rutina' => 'lunes']) }}">
+                            Ver rutina
+                        </a>
                         <hr>
                         <p class="link_inicio">Desactivar rutinas</p>
                         <hr>
