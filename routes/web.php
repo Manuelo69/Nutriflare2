@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EjercicioController;
 use App\Http\Controllers\InicioController;
 use App\Http\Controllers\ObjetivoController;
 use App\Http\Controllers\ProgresoController;
@@ -18,8 +19,12 @@ Route::get('/seguimiento/{user}/editar', [SeguimientoController::class, 'edit'])
 Route::post('/seguimiento/{user}/', [SeguimientoController::class, 'store'])->name('seguimiento.store');
 Route::post('/seguimiento/{user}/crear', [SeguimientoController::class, 'calcularProgreso'])->name('seguimiento.calculo');
 
+// Rutas de ejercicios
+Route::get('/ejercicio/subir', [EjercicioController::class, 'create'])->name('ejercicio.create');
+Route::post('/ejercicio/guardar', [EjercicioController::class, 'store'])->name('ejercicio.store');
+Route::get('/ejercicio/{id}', [EjercicioController::class, 'show'])->name('ejercicio.show'); // Ajustado para usar EjercicioController
+
 // Rutas de rutinas
-Route::get('/ejercicio/{id}', [RutinaController::class, 'showModal'])->name('rutina.show');
 Route::get('/rutina/{id}/editar', [RutinaController::class, 'edit'])->name('rutina.edit');
 Route::put('/rutina/{id}', [RutinaController::class, 'update'])->name('rutina.update');
 Route::get('/rutina/crear', [RutinaController::class, 'create'])->name('rutina.create');

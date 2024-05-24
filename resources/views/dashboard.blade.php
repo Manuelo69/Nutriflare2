@@ -17,9 +17,10 @@
                             Ver rutina
                         </a>
                         <hr>
-                        <p class="link_inicio">Desactivar rutinas</p>
-                        <hr>
-                        <p class="link_inicio">Ver rutinas antiguas</p>
+                        <a class="link_inicio" href="{{ route('ejercicio.create') }}">
+                            Subir ejercicio
+                        </a>
+
                     </div>
                 </legend>
                 <legend class="text-center rounded-xl p-6 font-custom font-bold text-xl"> Progresion

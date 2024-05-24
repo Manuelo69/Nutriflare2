@@ -43,7 +43,7 @@ class EjerciciosSeeder extends Seeder
         [
             'nombre_ejercicio' => 'Zancadas',
             'musculo' => 'pierna',
-            'imagen' => 'zancadas.jpeg',
+            'imagen' => 'zancada.jpeg',
             'aprobado' => true,
             'explicacion' => 'Da un gran paso hacia adelante con una pierna y flexiona ambas rodillas hasta que la pierna de atrás casi toque el suelo. Luego, empuja con el talón de la pierna delantera para volver a la posición inicial.'
         ],
@@ -504,7 +504,7 @@ class EjerciciosSeeder extends Seeder
         array(
             'nombre_ejercicio' => 'Sit-Ups',
             'musculo' => 'abdominales',
-            'imagen' => 'sit_ups.jpeg',
+            'imagen' => 'sit_ups.jpg',
             'aprobado' => true,
             'explicacion' => 'Acuéstate boca arriba con las rodillas dobladas y los pies apoyados en el suelo, coloca las manos detrás de la cabeza y eleva el torso del suelo hacia las rodillas. Contrae los abdominales en la parte superior del movimiento y luego baja de nuevo.'
         ),

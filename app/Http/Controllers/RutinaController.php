@@ -97,11 +97,7 @@ class RutinaController extends Controller
         return view('rutina.show', compact('rutina', 'dia_semana', 'user'));
     }
 
-    public function showModal(string $id)
-    {
-        $ejercicio = Ejercicio::findOrFail($id);
-        return response()->json($ejercicio);
-    }
+
 
 
 
