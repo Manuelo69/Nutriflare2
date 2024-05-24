@@ -6,6 +6,7 @@ use App\Models\Ejercicio;
 use App\Models\EjerciciosRutina;
 use App\Models\Rutina;
 use App\Models\User;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class RutinaController extends Controller
@@ -141,4 +142,13 @@ class RutinaController extends Controller
 
 
 
+    public function exportarPDF($id)
+    {
+        $rutina = Rutina::with('ejerciciosRutina.ejercicio')->findOrFail($id);
+        $user = User::findOrFail($rutina->user_id);
+
+        $pdf = Pdf::loadView('rutina.pdf', compact('rutina', 'user'));
+
+        return $pdf->download('rutina-' . $rutina->dia_semana . '.pdf');
+    }
 }

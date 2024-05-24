@@ -23,7 +23,7 @@
                 <div class="flex flex-wrap justify-center mb-4 space-x-1 space-y-1 sm:space-x-2 sm:space-y-0">
                     @foreach (['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo'] as $dia)
                         <a href="{{ route('rutina.show', ['user' => $user->name, 'rutina' => $dia]) }}"
-                            class="px-4 py-2 bg-azul text-gray-700 rounded {{ $dia_semana === $dia ? 'bg-blue-500 text-white' : '' }}">
+                            class="px-4 py-2 bg-azul hover:bg-blue-700 text-gray-700 rounded {{ $dia_semana === $dia ? 'bg-blue-500 text-white' : '' }}">
                             {{ ucfirst($dia) }}
                         </a>
                     @endforeach
@@ -47,21 +47,62 @@
                                     <p class="text-gray-600">Repeticiones: {{ $ejercicioRutina->repeticiones }}</p>
                                 </div>
                                 <div class="flex justify-center mt-2">
-                                    <button class="mt-2 px-4 py-2 bg-red-500 text-white rounded">Eliminar</button>
+                                    <button class="mt-2 px-4 py-2 bg-blue-500 text-white rounded"
+                                        onclick="mostrarDetalles({{ $ejercicioRutina->ejercicio->id }})">
+                                        Mostrar detalles
+                                    </button>
                                 </div>
                             </div>
                         @endforeach
                     </div>
 
                     <!-- Botón de edición -->
-                    <div class="flex justify-center mt-6">
+                    <div class="flex justify-center content-evenly mt-6">
                         <a href="{{ route('rutina.edit', ['id' => $rutina->id]) }}"
-                            class="bg-yellow-500 text-white px-4 py-2 rounded">Editar Rutina</a>
+                            class="bg-azul hover:bg-blue-700 text-white px-4 py-2 rounded mr-6">Editar Rutina</a>
+                        <a href="{{ route('rutina.exportar-pdf', ['id' => $rutina->id]) }}"
+                            class="bg-azul hover:bg-blue-700 text-white px-4 py-2 rounded">Exportar a PDF</a>
                     </div>
                 @else
                     <p class="text-center text-gray-600">No hay rutina activa para el día seleccionado.</p>
                 @endif
             </div>
-        </div>
-    </div>
+
+
+            <!-- Modal de detalles del ejercicio -->
+            <!-- Modal de detalles del ejercicio -->
+            <div id="modalDetalles" class="fixed z-10 inset-0 overflow-y-auto hidden">
+                <div class="flex items-center justify-center min-h-screen px-4 text-center">
+                    <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+                        <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+                    </div>
+                    <div
+                        class="inline-block bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full">
+                        <div class="bg-white p-6">
+                            <div id="modalImagen" class="mb-4 flex justify-center"></div>
+                            <h3 class="text-xl font-medium leading-6 text-gray-900" id="modalNombre"></h3>
+                            <div id="modalExplicacion" class="mt-2 text-sm text-gray-500"></div>
+                            <button id="cerrarModal"
+                                class="mt-4 bg-red-500 text-white px-4 py-2 rounded">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                function mostrarDetalles(id) {
+                    fetch(`/ejercicio/${id}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            document.getElementById('modalImagen').innerHTML =
+                                `<img src="/assets/imagenes/${data.imagen}" class="w-48 h-48 object-cover rounded" alt="${data.nombre_ejercicio}">`;
+                            document.getElementById('modalNombre').innerText = data.nombre_ejercicio;
+                            document.getElementById('modalExplicacion').innerText = data.explicacion;
+                            document.getElementById('modalDetalles').classList.remove('hidden');
+                        });
+                }
+                document.getElementById('cerrarModal').addEventListener('click', function() {
+                    document.getElementById('modalDetalles').classList.add('hidden');
+                });
+            </script>
 </x-app-layout>

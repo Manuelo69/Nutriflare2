@@ -26,6 +26,7 @@ Route::get('/ejercicio/{id}', [EjercicioController::class, 'show'])->name('ejerc
 
 // Rutas de rutinas
 Route::get('/rutina/{id}/editar', [RutinaController::class, 'edit'])->name('rutina.edit');
+Route::get('/rutina/{id}/exportar-pdf', [RutinaController::class, 'exportarPDF'])->name('rutina.exportar-pdf');
 Route::put('/rutina/{id}', [RutinaController::class, 'update'])->name('rutina.update');
 Route::get('/rutina/crear', [RutinaController::class, 'create'])->name('rutina.create');
 Route::post('/rutina/guardar', [RutinaController::class, 'store'])->name('rutina.store');
