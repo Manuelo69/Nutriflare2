@@ -84,6 +84,7 @@ class SeguimientoController extends Controller
             ->orderByDesc('created_at')
             ->first();
 
+        // Crear una nueva instancia de Seguimiento para almacenar el seguimiento actual
         $seguimientoNuevo = new Seguimiento();
         $seguimientoNuevo->altura = $seguimiento->altura;
         $seguimientoNuevo->peso = $seguimiento->peso;
@@ -94,11 +95,11 @@ class SeguimientoController extends Controller
         $seguimientoNuevo->imc = $seguimiento->IMC;
         $seguimientoNuevo->tipo = 'seguimiento';
 
-        // Calcular la diferencia entre el último seguimiento base y el seguimiento objetivo
+        // Calcular las diferencias entre el último seguimiento base y el objetivo
         $diferenciaAltura = $ultimoSeguimientoObjetivo->altura - $ultimoSeguimientoBase->altura;
-        $diferenciaPeso = $ultimoSeguimientoObjetivo->peso - $ultimoSeguimientoBase->peso;
-        $diferenciaGrasa = $ultimoSeguimientoObjetivo->grasa_corporal - $ultimoSeguimientoBase->grasa_corporal;
-        $diferenciaCardio = $ultimoSeguimientoObjetivo->minutos_cardio - $ultimoSeguimientoBase->minutos_cardio;
+        $diferenciaPeso = $ultimoSeguimientoBase->peso - $ultimoSeguimientoObjetivo->peso; // Ajustar para perder peso
+        $diferenciaGrasa = $ultimoSeguimientoBase->grasa_corporal - $ultimoSeguimientoObjetivo->grasa_corporal; // Ajustar para perder grasa
+        $diferenciaCardio = $ultimoSeguimientoObjetivo->minutos_cardio - $ultimoSeguimientoBase->minutos_cardio; // Ajustar para aumentar el cardio
         $diferenciaIMC = $ultimoSeguimientoObjetivo->imc - $ultimoSeguimientoBase->imc;
 
         // Calcular la diferencia entre las horas de sueño
@@ -117,25 +118,25 @@ class SeguimientoController extends Controller
         $diferenciaTotalSueno = ($ultimoSeguimientoObjetivo->horas_sueño * 60) + $ultimoSeguimientoObjetivo->minutos_sueño - $totalMinutosSuenoBase;
 
         // Determinar si la diferencia es positiva (objetivo de ganancia) o negativa (objetivo de pérdida)
-        $diferenciaAlturaSigno = $ultimoSeguimientoObjetivo->altura >= $ultimoSeguimientoBase->altura ? 1 : -1;
-        $diferenciaPesoSigno = $ultimoSeguimientoObjetivo->peso >= $ultimoSeguimientoBase->peso ? 1 : -1;
-        $diferenciaGrasaSigno = $ultimoSeguimientoObjetivo->grasa_corporal >= $ultimoSeguimientoBase->grasa_corporal ? 1 : -1;
-        $diferenciaCardioSigno = $ultimoSeguimientoObjetivo->minutos_cardio >= $ultimoSeguimientoBase->minutos_cardio ? 1 : -1;
-        $diferenciaSuenoSigno = $ultimoSeguimientoObjetivo->horas_sueño >= $ultimoSeguimientoBase->horas_sueño ? 1 : -1;
-        $diferenciaIMCSigno = $ultimoSeguimientoObjetivo->imc >= $ultimoSeguimientoBase->imc ? 1 : -1;
+        $diferenciaAlturaSigno = $diferenciaAltura >= 0 ? 1 : -1;
+        $diferenciaPesoSigno = $diferenciaPeso >= 0 ? 1 : -1; // Ajuste para pérdida de peso
+        $diferenciaGrasaSigno = $diferenciaGrasa >= 0 ? 1 : -1; // Ajuste para pérdida de grasa
+        $diferenciaCardioSigno = $diferenciaCardio >= 0 ? 1 : -1; // Ajuste para aumento de cardio
+        $diferenciaSuenoSigno = $diferenciaTotalSueno >= 0 ? 1 : -1; // Ajuste para aumento de sueño
+        $diferenciaIMCSigno = $diferenciaIMC >= 0 ? 1 : -1;
 
-        // Calcular el porcentaje de progreso para cada campo
-        $progresoAltura = ($ultimoSeguimientoObjetivo->altura != 0) ? ($diferenciaAlturaSigno * abs($seguimiento->altura - $ultimoSeguimientoBase->altura) / $diferenciaAltura) * 100 : 0;
-        $progresoPeso = ($ultimoSeguimientoObjetivo->peso != 0) ? ($diferenciaPesoSigno * abs($seguimiento->peso - $ultimoSeguimientoBase->peso) / $diferenciaPeso) * 100 : 0;
-        $progresoGrasa = ($ultimoSeguimientoObjetivo->grasa_corporal != 0) ? ($diferenciaGrasaSigno * abs($seguimiento->grasa - $ultimoSeguimientoBase->grasa_corporal) / $diferenciaGrasa) * 100 : 0;
-        $progresoCardio = ($ultimoSeguimientoObjetivo->minutos_cardio != 0) ? ($diferenciaCardioSigno * abs($seguimiento->min_cardio - $ultimoSeguimientoBase->minutos_cardio) / $diferenciaCardio) * 100 : 0;
-        $progresoSueno = ($diferenciaTotalSueno != 0) ? (($totalMinutosSuenoNuevo - $totalMinutosSuenoBase) / $diferenciaTotalSueno) * 100 : 0;
-        $progresoIMC = ($ultimoSeguimientoObjetivo->imc != 0) ? ($diferenciaIMCSigno * abs($seguimiento->IMC - $ultimoSeguimientoBase->imc) / $diferenciaIMC) * 100 : 0;
+        // Calcular el progreso de cada campo
+        $progresoAltura = $diferenciaAltura != 0 ? ($diferenciaAlturaSigno * ($seguimiento->altura - $ultimoSeguimientoBase->altura) / abs($diferenciaAltura)) * 100 : 0;
+        $progresoPeso = $diferenciaPeso != 0 ? ($diferenciaPesoSigno * ($ultimoSeguimientoBase->peso - $seguimiento->peso) / abs($diferenciaPeso)) * 100 : 0;
+        $progresoGrasa = $diferenciaGrasa != 0 ? ($diferenciaGrasaSigno * ($ultimoSeguimientoBase->grasa_corporal - $seguimiento->grasa_corporal) / abs($diferenciaGrasa)) * 100 : 0;
+        $progresoCardio = $diferenciaCardio != 0 ? ($diferenciaCardioSigno * ($seguimiento->min_cardio - $ultimoSeguimientoBase->minutos_cardio) / abs($diferenciaCardio)) * 100 : 0;
+        $progresoSueno = $diferenciaTotalSueno != 0 ? ($diferenciaSuenoSigno * ($totalMinutosSuenoNuevo - $totalMinutosSuenoBase) / abs($diferenciaTotalSueno)) * 100 : 0;
+        $progresoIMC = $diferenciaIMC != 0 ? ($diferenciaIMCSigno * ($seguimiento->IMC - $ultimoSeguimientoBase->imc) / abs($diferenciaIMC)) * 100 : 0;
 
         // Calcular el progreso total
         $progresoTotal = ($progresoAltura + $progresoPeso + $progresoGrasa + $progresoCardio + $progresoSueno + $progresoIMC) / 6;
 
-        // Guardar los últimos datos en la base de datos
+        // Guardar los datos del seguimiento actual en la base de datos
         $seguimientoNuevo->porcentaje_progreso = $progresoTotal;
         $seguimientoNuevo->user_id = auth()->user()->id;
         $seguimientoNuevo->save();
@@ -151,6 +152,7 @@ class SeguimientoController extends Controller
             'progresoTotal' => $progresoTotal
         ]);
     }
+
 
     function show2()
     {

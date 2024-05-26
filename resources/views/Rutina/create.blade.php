@@ -204,7 +204,6 @@
                     repeticiones
                 });
             }
-
             fetch(`{{ route('rutina.store') }}`, {
                     method: 'POST',
                     headers: {

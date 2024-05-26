@@ -123,4 +123,9 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    // 'providers' => [
+    //     // Otros proveedores de servicio
+    //     Barryvdh\DomPDF\ServiceProvider::class,
+    // ],
+
 ];
