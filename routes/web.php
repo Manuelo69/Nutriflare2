@@ -1,9 +1,8 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EjercicioController;
 use App\Http\Controllers\InicioController;
-use App\Http\Controllers\ObjetivoController;
-use App\Http\Controllers\ProgresoController;
 use App\Http\Controllers\RutinaController;
 use App\Http\Controllers\SeguimientoController;
 use Illuminate\Support\Facades\Route;
@@ -32,6 +31,16 @@ Route::get('/rutina/crear', [RutinaController::class, 'create'])->name('rutina.c
 Route::post('/rutina/guardar', [RutinaController::class, 'store'])->name('rutina.store');
 Route::get('/rutinas/crear/filtrar', [RutinaController::class, 'filtrar'])->name('rutina.filtrar');
 Route::get('/ejercicio/{user}/rutina/{rutina}', [RutinaController::class, 'show'])->name('rutina.show');
+
+
+
+Route::get('/admin/ejercicios/aprobar', [AdminController::class, 'aprobarEjercicios'])
+    ->name('admin.ejercicios.aprobar')
+    ->middleware('auth', 'role:admin');
+
+Route::get('/admin/usuarios/moderar', [AdminController::class, 'moderarUsuarios'])
+    ->name('admin.usuarios.moderar')
+    ->middleware('auth', 'role:admin');
 
 // Rutas de middleware para autenticación
 Route::middleware([
