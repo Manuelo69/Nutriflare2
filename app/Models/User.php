@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
@@ -94,9 +95,20 @@ class User extends Authenticatable
     }
 
 
-    public function hasRole($role)
-    {
-        return $this->roles()->where('name', $role)->exists();
-    }
+    // public function getRol()
+    // {
+
+    //     $rol = DB::table('roles')
+    //         ->where('id', function ($query) {
+    //             $query->select('role_id')
+    //                 ->from('model_has_roles')
+    //                 ->where('model_id', $this->id);
+    //         })
+    //         ->pluck('name')
+    //         ->first();
+
+    //     return $rol;
+    // }
+
 
 }

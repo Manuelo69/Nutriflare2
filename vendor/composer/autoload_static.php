@@ -408,8 +408,8 @@ class ComposerStaticInitb9978da50c4afdfc73c241b98782cfe6
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -689,12 +689,15 @@ class ComposerStaticInitb9978da50c4afdfc73c241b98782cfe6
         'App\\Actions\\Fortify\\UpdateUserPassword' => __DIR__ . '/../..' . '/app/Actions/Fortify/UpdateUserPassword.php',
         'App\\Actions\\Fortify\\UpdateUserProfileInformation' => __DIR__ . '/../..' . '/app/Actions/Fortify/UpdateUserProfileInformation.php',
         'App\\Actions\\Jetstream\\DeleteUser' => __DIR__ . '/../..' . '/app/Actions/Jetstream/DeleteUser.php',
+        'App\\Http\\Controllers\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\EjercicioController' => __DIR__ . '/../..' . '/app/Http/Controllers/EjercicioController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\InicioController' => __DIR__ . '/../..' . '/app/Http/Controllers/InicioController.php',
         'App\\Http\\Controllers\\RutinaController' => __DIR__ . '/../..' . '/app/Http/Controllers/RutinaController.php',
         'App\\Http\\Controllers\\SeguimientoController' => __DIR__ . '/../..' . '/app/Http/Controllers/SeguimientoController.php',
+        'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
+        'App\\Http\\Middleware\\RoleMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/RoleMiddleware.php',
         'App\\Http\\Requests\\EjercicioRequest' => __DIR__ . '/../..' . '/app/Http/Requests/EjercicioRequest.php',
         'App\\Http\\Requests\\SeguimientoRequest' => __DIR__ . '/../..' . '/app/Http/Requests/SeguimientoRequest.php',
         'App\\Models\\Dieta' => __DIR__ . '/../..' . '/app/Models/Dieta.php',
