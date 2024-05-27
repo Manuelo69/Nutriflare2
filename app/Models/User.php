@@ -92,4 +92,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(Dieta::class);
     }
+
+
+    public function hasRole($role)
+    {
+        return $this->roles()->where('name', $role)->exists();
+    }
+
 }

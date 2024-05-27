@@ -14,6 +14,14 @@
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Inicio') }}
                     </x-nav-link>
+                    @if (Auth::user()->hasRole('admin'))
+                        <x-nav-link href="{{ route('admin.ejercicios.aprobar') }}" :active="request()->routeIs('ejercicios.aprobar')">
+                            {{ __('Aprobar Ejercicios') }}
+                        </x-nav-link>
+                        <x-nav-link href="{{ route('admin.usuarios.moderar') }}" :active="request()->routeIs('usuarios.moderar')">
+                            {{ __('Moderar Usuarios') }}
+                        </x-nav-link>
+                    @endif
                 </div>
             </div>
 
