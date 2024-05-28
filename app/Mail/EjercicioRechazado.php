@@ -10,13 +10,10 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class EjercicioAprobado extends Mailable
+class EjercicioRechazado extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * Create a new message instance.
-     */
     public $ejercicio;
 
     public function __construct(Ejercicio $ejercicio)
@@ -24,14 +21,10 @@ class EjercicioAprobado extends Mailable
         $this->ejercicio = $ejercicio;
     }
 
-
-    /**
-     * Get the message content definition.
-     */
     public function build()
     {
-        return $this->view('emails.ejercicio_aprobado')
-            ->subject('Tu ejercicio ha sido aprobado');
+        return $this->view('emails.ejercicio_rechazado')
+            ->subject('Tu ejercicio ha sido rechazado');
     }
 
     /**

@@ -26,6 +26,7 @@ class EjercicioController extends Controller
             'imagen' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'explicacion' => 'required|string',
             'musculo' => 'required|in:pierna,triceps,biceps,pecho,espalda,abdominales,hombro',
+            'correoContacto' => 'required|email'
         ]);
 
         // Almacenar el archivo en el sistema de archivos y obtener el nombre del archivo
@@ -39,8 +40,9 @@ class EjercicioController extends Controller
         $ejercicio->explicacion = $request->explicacion;
         $ejercicio->musculo = $request->musculo;
         $ejercicio->aprobado = false;
+        $ejercicio->correoContacto = $request->correoContacto;
         $ejercicio->save();
 
-        return redirect()->route('ejercicio.create')->with('success', 'Ejercicio subido exitosamente');
+        return redirect()->route('dashboard')->with('success', 'Ejercicio subido exitosamente');
     }
 }

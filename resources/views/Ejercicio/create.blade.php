@@ -18,7 +18,7 @@
     @endif
 
     @if (session('success'))
-        <div class="alert alert-success">
+        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
             {{ session('success') }}
         </div>
     @endif
@@ -44,8 +44,8 @@
 
                     <div class="w-80 mt-4">
                         <label for="imagen" class="block font-bold text-2xl mt-2">Imagen</label>
-                        <input type="file" id="imagen" name="imagen" class="border p-2 w-full rounded-xl"
-                            required>
+                        <input type="file" id="imagen" name="imagen"
+                            class="border p-2 w-full rounded-xl bg-white" required>
                     </div>
 
                     <div class="w-80 mt-4">
@@ -65,8 +65,13 @@
                             <option value="hombro">Hombro</option>
                         </select>
                     </div>
+                    <div class="w-80 mt-4">
+                        <label for="correoContacto" class="block font-bold text-2xl mt-2">Correo</label>
+                        <input type="text" id="correoContacto" name="correoContacto"
+                            class="border p-2 w-full rounded-xl" required value={{ Auth::user()->email }}>
+                    </div>
                     <button type="submit"
-                        class=" bg-blue-500 hover:bg-blue-700 text-white rounded px-6 py-4 mt-4">Subir
+                        class=" bg-blue-500 hover:bg-blue-700 text-white rounded px-6 py-4 mt-4 shadow-sm shadow-black">Subir
                         Ejercicio</button>
                 </form>
             </div>

@@ -68,8 +68,6 @@
                 @endif
             </div>
 
-
-            <!-- Modal de detalles del ejercicio -->
             <!-- Modal de detalles del ejercicio -->
             <div id="modalDetalles" class="fixed z-10 inset-0 overflow-y-auto hidden">
                 <div class="flex items-center justify-center min-h-screen px-4 text-center">

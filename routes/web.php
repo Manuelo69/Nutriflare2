@@ -34,8 +34,16 @@ Route::get('/ejercicio/{user}/rutina/{rutina}', [RutinaController::class, 'show'
 
 
 
-Route::get('/admin/ejercicios/aprobar', [AdminController::class, 'aprobarEjercicios'])
+Route::get('/admin/ejercicios/aprobar', [AdminController::class, 'cargarEjercicios'])
     ->name('admin.ejercicios.aprobar')
+    ->middleware('auth');
+
+Route::post('/admin/ejercicios/aprobar/{id}', [AdminController::class, 'aprobarEjercicio'])
+    ->name('admin.ejercicios.aprobar.post')
+    ->middleware('auth');
+
+Route::post('/admin/ejercicios/rechazar/{id}', [AdminController::class, 'rechazarEjercicio'])
+    ->name('admin.ejercicios.rechazar.post')
     ->middleware('auth');
 
 Route::get('/admin/usuarios/moderar', [AdminController::class, 'moderarUsuarios'])
