@@ -30,8 +30,8 @@ class EjercicioController extends Controller
         ]);
 
         // Almacenar el archivo en el sistema de archivos y obtener el nombre del archivo
-        $request->file('imagen')->store('', 'nutriflare');
         $imageName = $request->file('imagen')->getClientOriginalName();
+        $request->file('imagen')->storeAs('', $imageName, 'nutriflare');
 
         $ejercicio = new Ejercicio();
         $ejercicio->nombre_ejercicio = $request->nombre_ejercicio;

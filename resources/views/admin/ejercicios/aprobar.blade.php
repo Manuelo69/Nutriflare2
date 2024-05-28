@@ -26,74 +26,39 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-6">
-                    <form method="GET" action="{{ route('admin.ejercicios.aprobar') }}">
+                    <form method="GET" id="searchForm">
                         <div class="flex space-x-4 mb-4">
-                            <input type="text" name="search" placeholder="Buscar por nombre"
+                            <input type="text" name="search" id="search" placeholder="Buscar por nombre"
                                 value="{{ request('search') }}"
                                 class="form-input rounded-md shadow-sm mt-1 block w-full">
-                            <input type="text" name="musculo" placeholder="Buscar por músculo"
-                                value="{{ request('musculo') }}"
+                            <select name="musculo" id="musculo" class="border p-2 m-2 w-60 rounded-xl">
+                                <option value="" {{ request('musculo') == '' }}>Todos los músculos</option>
+                                <option value="pierna" {{ request('musculo') == 'pierna' ? 'selected' : '' }}>Pierna
+                                </option>
+                                <option value="triceps" {{ request('musculo') == 'triceps' ? 'selected' : '' }}>Tríceps
+                                </option>
+                                <option value="biceps" {{ request('musculo') == 'biceps' ? 'selected' : '' }}>Bíceps
+                                </option>
+                                <option value="pecho" {{ request('musculo') == 'pecho' ? 'selected' : '' }}>Pecho
+                                </option>
+                                <option value="espalda" {{ request('musculo') == 'espalda' ? 'selected' : '' }}>Espalda
+                                </option>
+                                <option value="abdominales"
+                                    {{ request('musculo') == 'abdominales' ? 'selected' : '' }}>
+                                    Abdominales</option>
+                                <option value="hombro" {{ request('musculo') == 'hombro' ? 'selected' : '' }}>Hombro
+                                </option>
+                            </select>
+                            <input type="text" name="correo" id="correo" placeholder="Buscar por correo"
+                                value="{{ request('correo') }}"
                                 class="form-input rounded-md shadow-sm mt-1 block w-full">
-                            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md">Buscar</button>
+                            <button id="search-form" class="bg-blue-500 text-white px-4 py-2 rounded-md">Buscar</button>
+                            <button id="resetBtn" class="bg-gray-500 text-white px-4 py-2 rounded-md">Reset</button>
                         </div>
                     </form>
 
-                    <table class="min-w-full bg-white">
-                        <thead>
-                            <tr>
-                                <th
-                                    class="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">
-                                    Imagen</th>
-                                <th
-                                    class="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">
-                                    Nombre</th>
-                                <th
-                                    class="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">
-                                    Músculo</th>
-                                <th
-                                    class="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">
-                                    Subido por</th>
-                                <th
-                                    class="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">
-                                    Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-white">
-                            @foreach ($ejerciciosPendientes as $ejercicio)
-                                <tr>
-                                    <td class="px-6 py-4 border-b border-gray-500">
-                                        <img src="{{ asset('assets/imagenes/' . $ejercicio->imagen) }}"
-                                            alt="{{ $ejercicio->nombre_ejercicio }}"
-                                            class="w-20 h-20 object-cover rounded">
-                                    </td>
-                                    <td class="px-6 py-4 border-b border-gray-500">{{ $ejercicio->nombre_ejercicio }}
-                                    </td>
-                                    <td class="px-6 py-4 border-b border-gray-500">{{ $ejercicio->musculo }}</td>
-                                    <td class="px-6 py-4 border-b border-gray-500">{{ $ejercicio->correoContacto }}
-                                    </td>
-                                    <td class="px-6 py-4 border-b border-gray-500">
-                                        <form action="{{ route('admin.ejercicios.aprobar.post', $ejercicio->id) }}"
-                                            method="POST" class="inline-block">
-                                            @csrf
-                                            <button type="submit"
-                                                class="bg-green-500 text-white px-4 py-2 rounded">Aprobar</button>
-                                        </form>
-                                        <form action="{{ route('admin.ejercicios.rechazar.post', $ejercicio->id) }}"
-                                            method="POST" class="inline-block">
-                                            @csrf
-                                            <button type="submit"
-                                                class="bg-red-500 text-white px-4 py-2 rounded">Rechazar</button>
-                                        </form>
-                                        <button onclick="mostrarDetalles({{ $ejercicio->id }})"
-                                            class="bg-blue-500 text-white px-4 py-2 rounded">Detalles</button>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-
-                    <div class="mt-4">
-                        {{ $ejerciciosPendientes->links() }}
+                    <div id="ejerciciosTable">
+                        @include('admin.ejercicios.ejercicios-table')
                     </div>
                 </div>
             </div>
@@ -134,6 +99,53 @@
             function cerrarModal() {
                 document.getElementById('modalDetalles').classList.add('hidden');
             }
+
+            document.getElementById('search-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                fetchEjercicios();
+            });
+
+            document.getElementById('resetBtn').addEventListener('click', function() {
+                document.getElementById('search').value = '';
+                document.getElementById('musculo').selectedIndex = 0;
+                document.getElementById('correo').value = '';
+                fetchEjercicios();
+            });
+
+            function fetchEjercicios(page = 1) {
+                const search = document.getElementById('search').value;
+                const musculo = document.getElementById('musculo').value;
+                const correo = document.getElementById('correo').value;
+
+                fetch(`{{ route('admin.ejercicios.aprobar') }}?page=${page}&search=${search}&musculo=${musculo}&correo=${correo}`, {
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('ejerciciosTable').innerHTML = data.html;
+                        document.querySelector('.pagination').addEventListener('click', function(e) {
+                            if (e.target.tagName === 'A') {
+                                e.preventDefault();
+                                const url = new URL(e.target.href);
+                                const page = url.searchParams.get('page');
+                                fetchEjercicios(page);
+                            }
+                        });
+                    });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                document.querySelector('.pagination').addEventListener('click', function(e) {
+                    if (e.target.tagName === 'A') {
+                        e.preventDefault();
+                        const url = new URL(e.target.href);
+                        const page = url.searchParams.get('page');
+                        fetchEjercicios(page);
+                    }
+                });
+            });
         </script>
     </x-app-layout>
 @else

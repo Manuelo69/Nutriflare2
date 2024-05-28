@@ -6,6 +6,7 @@ use App\Mail\EjercicioAprobado;
 use App\Mail\EjercicioRechazado;
 use App\Models\Ejercicio;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Mail\Mailable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -15,10 +16,30 @@ class AdminController extends Controller
     /**
      * Mostrar la vista para aprobar ejercicios.
      */
-    public function cargarEjercicios()
+    public function cargarEjercicios(Request $request)
     {
-        // Lógica para obtener los ejercicios pendientes de aprobación
-        $ejerciciosPendientes = Ejercicio::where('aprobado', false)->paginate(12);
+        $query = Ejercicio::where('aprobado', false);
+
+        if ($request->filled('search')) {
+            $query->where('nombre_ejercicio', 'like', '%' . $request->search . '%');
+        }
+
+        if ($request->filled('musculo')) {
+            $query->where('musculo', $request->musculo);
+        }
+
+        if ($request->filled('correo')) {
+            $query->where('correoContacto', 'like', '%' . $request->correo . '%');
+        }
+
+        $ejerciciosPendientes = $query->paginate(12);
+
+        if ($request->ajax()) {
+            return response()->json([
+                'html' => view('admin.ejercicios.partials.ejercicios-table', compact('ejerciciosPendientes'))->render(),
+                'pagination' => (string) $ejerciciosPendientes->links()
+            ]);
+        }
 
         return view('admin.ejercicios.aprobar', compact('ejerciciosPendientes'));
     }
