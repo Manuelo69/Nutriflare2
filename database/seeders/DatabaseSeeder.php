@@ -28,6 +28,6 @@ class DatabaseSeeder extends Seeder
         DB::table('users')->delete();
         $this->call(UserSeeder::class);
         User::factory(20)->create();
-        $this->call(RoleSeeder::class);
+        $this->call(RolesSeeder::class);
     }
 }

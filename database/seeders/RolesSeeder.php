@@ -2,12 +2,13 @@
 
 namespace Database\Seeders;
 
+
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 
-class RoleSeeder extends Seeder
+class RolesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,8 +16,8 @@ class RoleSeeder extends Seeder
     public function run(): void
     {
         // Crear roles
-        $adminRole = Role::create(['name' => 'admin']);
-        $userRole = Role::create(['name' => 'user']);
+        $adminRole = Role::create(['name' => 'admin', 'guard_name' => 'web']);
+        $userRole = Role::create(['name' => 'user', 'guard_name' => 'web']);
 
         // Asignar rol de admin al primer usuario registrado
         $firstUser = User::find(1);

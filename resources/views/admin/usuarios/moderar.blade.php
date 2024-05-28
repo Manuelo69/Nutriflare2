@@ -1,7 +1,12 @@
 <!-- resources/views/admin/usuarios/moderar.blade.php -->
-@extends('layouts.app')
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Ver rutinas de ' . Auth::user()->name) }}
+        </h2>
+    </x-slot>
 
-@section('content')
+
     <div class="container">
         <h1>Moderar Usuarios</h1>
         @if ($usuarios->isEmpty())
@@ -14,4 +19,4 @@
             </ul>
         @endif
     </div>
-@endsection
+</x-app-layout>

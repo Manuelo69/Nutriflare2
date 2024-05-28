@@ -21,7 +21,7 @@ Route::post('/seguimiento/{user}/crear', [SeguimientoController::class, 'calcula
 // Rutas de ejercicios
 Route::get('/ejercicio/subir', [EjercicioController::class, 'create'])->name('ejercicio.create');
 Route::post('/ejercicio/guardar', [EjercicioController::class, 'store'])->name('ejercicio.store');
-Route::get('/ejercicio/{id}', [EjercicioController::class, 'show'])->name('ejercicio.show'); // Ajustado para usar EjercicioController
+Route::get('/ejercicio/{id}', [EjercicioController::class, 'show'])->name('ejercicio.show');
 
 // Rutas de rutinas
 Route::get('/rutina/{id}/editar', [RutinaController::class, 'edit'])->name('rutina.edit');
@@ -36,11 +36,11 @@ Route::get('/ejercicio/{user}/rutina/{rutina}', [RutinaController::class, 'show'
 
 Route::get('/admin/ejercicios/aprobar', [AdminController::class, 'aprobarEjercicios'])
     ->name('admin.ejercicios.aprobar')
-    ->middleware('auth', 'role:admin');
+    ->middleware('auth');
 
 Route::get('/admin/usuarios/moderar', [AdminController::class, 'moderarUsuarios'])
     ->name('admin.usuarios.moderar')
-    ->middleware('auth', 'role:admin');
+    ->middleware('auth');
 
 // Rutas de middleware para autenticación
 Route::middleware([
