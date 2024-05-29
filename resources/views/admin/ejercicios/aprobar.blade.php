@@ -29,9 +29,8 @@
                     <form method="GET" id="searchForm">
                         <div class="flex space-x-4 mb-4">
                             <input type="text" name="search" id="search" placeholder="Buscar por nombre"
-                                value="{{ request('search') }}"
-                                class="form-input rounded-md shadow-sm mt-1 block w-full">
-                            <select name="musculo" id="musculo" class="border p-2 m-2 w-60 rounded-xl">
+                                value="{{ request('search') }}" class="form-input rounded-md shadow-sm mt-1 block w-80">
+                            <select name="musculo" id="musculo" class="border p-2 m-2 w-80 rounded-xl">
                                 <option value="" {{ request('musculo') == '' }}>Todos los músculos</option>
                                 <option value="pierna" {{ request('musculo') == 'pierna' ? 'selected' : '' }}>Pierna
                                 </option>
@@ -51,7 +50,7 @@
                             </select>
                             <input type="text" name="correo" id="correo" placeholder="Buscar por correo"
                                 value="{{ request('correo') }}"
-                                class="form-input rounded-md shadow-sm mt-1 block w-full">
+                                class="form-input rounded-md shadow-sm mt-1 block w-80">
                             <button id="search-form" class="bg-blue-500 text-white px-4 py-2 rounded-md">Buscar</button>
                             <button id="resetBtn" class="bg-gray-500 text-white px-4 py-2 rounded-md">Reset</button>
                         </div>
