@@ -6,6 +6,8 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Amendozaaguiar\\LaravelLatEs\\Commands\\InstallLaravelLatEs' => $vendorDir . '/amendozaaguiar/laravel-lat-es/src/Commands/InstallLaravelLatEs.php',
+    'Amendozaaguiar\\LaravelLatEs\\LaravelLatEsServiceProvider' => $vendorDir . '/amendozaaguiar/laravel-lat-es/src/LaravelLatEsServiceProvider.php',
     'App\\Actions\\Fortify\\CreateNewUser' => $baseDir . '/app/Actions/Fortify/CreateNewUser.php',
     'App\\Actions\\Fortify\\PasswordValidationRules' => $baseDir . '/app/Actions/Fortify/PasswordValidationRules.php',
     'App\\Actions\\Fortify\\ResetUserPassword' => $baseDir . '/app/Actions/Fortify/ResetUserPassword.php',
@@ -23,6 +25,7 @@ return array(
     'App\\Http\\Middleware\\RoleMiddleware' => $baseDir . '/app/Http/Middleware/RoleMiddleware.php',
     'App\\Http\\Requests\\EjercicioRequest' => $baseDir . '/app/Http/Requests/EjercicioRequest.php',
     'App\\Http\\Requests\\SeguimientoRequest' => $baseDir . '/app/Http/Requests/SeguimientoRequest.php',
+    'App\\Mail\\CustomMail' => $baseDir . '/app/Mail/CustomMail.php',
     'App\\Mail\\EjercicioRechazado' => $baseDir . '/app/Mail/EjercicioRechazado.php',
     'App\\Models\\Dieta' => $baseDir . '/app/Models/Dieta.php',
     'App\\Models\\Ejercicio' => $baseDir . '/app/Models/Ejercicio.php',

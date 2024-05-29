@@ -3,13 +3,22 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'cda63adbd9232d53d8e5d78893215105b2bf814b',
+        'reference' => 'd226ad1097b6f00f5fb00d3124a96ca89c09fcb4',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'dev' => true,
     ),
     'versions' => array(
+        'amendozaaguiar/laravel-lat-es' => array(
+            'pretty_version' => '11.0.0',
+            'version' => '11.0.0.0',
+            'reference' => '5fd358acb8825bf9c81d5bbf32bc8eb5ee610889',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../amendozaaguiar/laravel-lat-es',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'amendozaaguiar/laraveles-spanish-for-jetstream' => array(
             'pretty_version' => '1.7.0',
             'version' => '1.7.0.0',
@@ -553,7 +562,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'cda63adbd9232d53d8e5d78893215105b2bf814b',
+            'reference' => 'd226ad1097b6f00f5fb00d3124a96ca89c09fcb4',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

@@ -204,6 +204,7 @@ class ComposerStaticInitb9978da50c4afdfc73c241b98782cfe6
         array (
             'ArchTech\\Enums\\' => 15,
             'App\\' => 4,
+            'Amendozaaguiar\\LaravelLatEs\\' => 28,
         ),
     );
 
@@ -658,9 +659,15 @@ class ComposerStaticInitb9978da50c4afdfc73c241b98782cfe6
             0 => __DIR__ . '/../..' . '/app',
             1 => __DIR__ . '/..' . '/laravel/pint/app',
         ),
+        'Amendozaaguiar\\LaravelLatEs\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/amendozaaguiar/laravel-lat-es/src',
+        ),
     );
 
     public static $classMap = array (
+        'Amendozaaguiar\\LaravelLatEs\\Commands\\InstallLaravelLatEs' => __DIR__ . '/..' . '/amendozaaguiar/laravel-lat-es/src/Commands/InstallLaravelLatEs.php',
+        'Amendozaaguiar\\LaravelLatEs\\LaravelLatEsServiceProvider' => __DIR__ . '/..' . '/amendozaaguiar/laravel-lat-es/src/LaravelLatEsServiceProvider.php',
         'App\\Actions\\Fortify\\CreateNewUser' => __DIR__ . '/../..' . '/app/Actions/Fortify/CreateNewUser.php',
         'App\\Actions\\Fortify\\PasswordValidationRules' => __DIR__ . '/../..' . '/app/Actions/Fortify/PasswordValidationRules.php',
         'App\\Actions\\Fortify\\ResetUserPassword' => __DIR__ . '/../..' . '/app/Actions/Fortify/ResetUserPassword.php',
@@ -678,6 +685,7 @@ class ComposerStaticInitb9978da50c4afdfc73c241b98782cfe6
         'App\\Http\\Middleware\\RoleMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/RoleMiddleware.php',
         'App\\Http\\Requests\\EjercicioRequest' => __DIR__ . '/../..' . '/app/Http/Requests/EjercicioRequest.php',
         'App\\Http\\Requests\\SeguimientoRequest' => __DIR__ . '/../..' . '/app/Http/Requests/SeguimientoRequest.php',
+        'App\\Mail\\CustomMail' => __DIR__ . '/../..' . '/app/Mail/CustomMail.php',
         'App\\Mail\\EjercicioRechazado' => __DIR__ . '/../..' . '/app/Mail/EjercicioRechazado.php',
         'App\\Models\\Dieta' => __DIR__ . '/../..' . '/app/Models/Dieta.php',
         'App\\Models\\Ejercicio' => __DIR__ . '/../..' . '/app/Models/Ejercicio.php',
