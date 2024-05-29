@@ -17,6 +17,8 @@ Route::get('/seguimiento/{user}/ultimoSeguimiento', [SeguimientoController::clas
 Route::get('/seguimiento/{user}/editar', [SeguimientoController::class, 'edit'])->name('seguimiento.edit');
 Route::post('/seguimiento/{user}/', [SeguimientoController::class, 'store'])->name('seguimiento.store');
 Route::post('/seguimiento/{user}/crear', [SeguimientoController::class, 'calcularProgreso'])->name('seguimiento.calculo');
+Route::get('/estadisticas', [SeguimientoController::class, 'mostrarEstadisticas'])->name('seguimiento.estadisticas');
+
 
 // Rutas de ejercicios
 Route::get('/ejercicio/subir', [EjercicioController::class, 'create'])->name('ejercicio.create');

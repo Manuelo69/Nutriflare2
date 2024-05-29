@@ -30,17 +30,15 @@
                         <hr>
                         <a href="{{ route('seguimiento.show2', ['user' => Auth::user()]) }}" class="link_inicio">Ver
                             ultimo progreso</a>
+                        <hr>
+                        <a href="{{ route('seguimiento.estadisticas', ['user' => Auth::user()]) }}"
+                            class="link_inicio">Ver estadisticas</a>
                     </div>
                 </legend>
                 <legend class="text-center rounded-xl p-6 font-custom font-bold text-xl"> Alimentacion
                     <div class= "flex flex-col justify-evenly  h-750px w-80 bg-verde rounded-xl shadow-lg shadow-black">
-                        <p class="link_inicio">Crear plan de alimentacion</p>
-                        <hr>
-                        <p class="link_inicio">Ver planes de alimentacion</p>
-                        <hr>
-                        <p class="link_inicio">Desactivar planes de alimentacion </p>
-                        <hr>
-                        <p class="link_inicio">Ver planes de alimentacion antiguas</p>
+
+                        <p class="link_inicio">Proximamente</p>
                     </div>
                 </legend>
             </div>

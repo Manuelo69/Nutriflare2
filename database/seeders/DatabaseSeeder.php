@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PlatosSeeder::class);
         DB::table('users')->delete();
         $this->call(UserSeeder::class);
-        User::factory(20)->create();
+        User::factory(10)->create();
         $this->call(RolesSeeder::class);
     }
 }
