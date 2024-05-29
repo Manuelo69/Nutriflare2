@@ -52,6 +52,10 @@ Route::get('/admin/usuarios/moderar', [AdminController::class, 'moderarUsuarios'
     ->name('admin.usuarios.moderar')
     ->middleware('auth');
 
+Route::delete('/admin/usuarios/{id}/eliminar', [AdminController::class, 'eliminarUsuario'])->middleware('auth')->name('admin.usuarios.eliminar');
+Route::post('/admin/usuarios/enviarCorreo', [AdminController::class, 'enviarCorreo'])->middleware('auth')->name('admin.usuarios.enviarCorreo');
+
+
 // Rutas de middleware para autenticación
 Route::middleware([
     'auth:sanctum',

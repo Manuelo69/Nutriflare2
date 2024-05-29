@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\CustomMail;
 use App\Mail\EjercicioAprobado;
 use App\Mail\EjercicioRechazado;
 use App\Models\Ejercicio;
@@ -67,10 +68,44 @@ class AdminController extends Controller
     /**
      * Mostrar la vista para moderar usuarios.
      */
-    public function moderarUsuarios()
+    public function moderarUsuarios(Request $request)
     {
         // Lógica para obtener los usuarios a moderar
-        $usuarios = User::all();
+        $query = User::query();
+
+        if ($request->filled('search')) {
+            $query->where('name', 'like', '%' . $request->search . '%')
+                ->orWhere('email', 'like', '%' . $request->search . '%');
+        }
+
+        if ($request->filled('fase_corporal')) {
+            $query->where('fase_corporal', $request->fase_corporal);
+        }
+
+        $usuarios = $query->paginate(10);
+
         return view('admin.usuarios.moderar', compact('usuarios'));
     }
+
+    public function eliminarUsuario($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+        return redirect()->route('admin.usuarios.moderar')->with('success', 'Usuario eliminado correctamente');
+    }
+
+    public function enviarCorreo(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'asunto' => 'required|string|max:255',
+            'mensaje' => 'required|string',
+        ]);
+
+        // Lógica para enviar el correo
+        Mail::to($request->email)->send(new CustomMail($request->asunto, $request->mensaje));
+
+        return redirect()->route('admin.usuarios.moderar')->with('success', 'Correo enviado correctamente');
+    }
+
 }
