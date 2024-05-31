@@ -128,7 +128,7 @@ class SeguimientoController extends Controller
         // Calcular el progreso de cada campo
         $progresoAltura = $diferenciaAltura != 0 ? ($diferenciaAlturaSigno * ($seguimiento->altura - $ultimoSeguimientoBase->altura) / abs($diferenciaAltura)) * 100 : 0;
         $progresoPeso = $diferenciaPeso != 0 ? ($diferenciaPesoSigno * ($ultimoSeguimientoBase->peso - $seguimiento->peso) / abs($diferenciaPeso)) * 100 : 0;
-        $progresoGrasa = $diferenciaGrasa != 0 ? ($diferenciaGrasaSigno * ($ultimoSeguimientoBase->grasa_corporal - $seguimiento->grasa_corporal) / abs($diferenciaGrasa)) * 10 : 0;
+        $progresoGrasa = $diferenciaGrasa != 0 ? ($diferenciaGrasaSigno * ($ultimoSeguimientoBase->grasa_corporal - $seguimiento->grasa) / abs($diferenciaGrasa)) * 100 : 0;
         $progresoCardio = $diferenciaCardio != 0 ? ($diferenciaCardioSigno * ($seguimiento->min_cardio - $ultimoSeguimientoBase->minutos_cardio) / abs($diferenciaCardio)) * 100 : 0;
         $progresoSueno = $diferenciaTotalSueno != 0 ? ($diferenciaSuenoSigno * ($totalMinutosSuenoNuevo - $totalMinutosSuenoBase) / abs($diferenciaTotalSueno)) * 100 : 0;
         $progresoIMC = $diferenciaIMC != 0 ? ($diferenciaIMCSigno * ($seguimiento->IMC - $ultimoSeguimientoBase->imc) / abs($diferenciaIMC)) * 100 : 0;
