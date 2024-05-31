@@ -9,6 +9,12 @@
         </h2>
 
     </x-slot>
+    @if (session('success'))
+        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+            {{ session('success') }}
+        </div>
+    @endif
+
     @if ($errors->any())
         <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
             <strong class="font-bold">¡Ups! Hubo algunos problemas con tu entrada.</strong>
@@ -24,7 +30,7 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg flex flex-row gap-8 p-5 h-screen">
                 <legend class="text-center rounded-xl p-6 font-custom font-bold text-xl"> Progresos
                     <div
-                        class= "flex flex-col h-780px w-80  bg-rojo rounded-xl shadow-lg shadow-black justify-evenly p-5">
+                        class= "flex flex-col h-780px w-80  bg-morado rounded-xl shadow-lg shadow-black justify-evenly p-5">
                         <div>
                             Progreso Altura
                             <meter class="w-full h-8 " min="0" max="100" low="50"

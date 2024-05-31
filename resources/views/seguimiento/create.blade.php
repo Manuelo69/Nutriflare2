@@ -8,6 +8,11 @@
                     seguimiento</a>
             </h2>
     </x-slot>
+    @if (session('success'))
+        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+            {{ session('success') }}
+        </div>
+    @endif
 
     @if ($errors->any())
         <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
@@ -25,7 +30,7 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg flex flex-row gap-8 p-5 h-screen">
                 <legend class="text-center rounded-xl p-6 font-custom font-bold text-xl ">Objetivo
                     <div
-                        class="flex flex-col h-700px w-80 bg-rojo rounded-xl shadow-lg shadow-black items-center justify-center">
+                        class="flex flex-col h-700px w-80 bg-morado rounded-xl shadow-lg shadow-black items-center justify-center">
                         <hr class="text-black w-full">
                         <h3 class="text-left font-bold text-2xl mt-2">Altura</h3>
                         <h4 class="text-left font-normal mb-2">
@@ -65,7 +70,7 @@
                     </div>
                 </legend>
                 <legend class="text-center rounded-xl p-6 font-custom font-bold text-xl"> Definir seguimiento
-                    <div class= "flex flex-col h-780px w-80  bg-rojo rounded-xl shadow-lg shadow-black">
+                    <div class= "flex flex-col h-780px w-80  bg-morado rounded-xl shadow-lg shadow-black">
                         <form action="{{ route('seguimiento.store', ['user' => Auth::user()]) }}"
                             class="flex flex-col items-center" method="POST">
                             @csrf
@@ -102,7 +107,7 @@
                 </legend>
                 <legend class="text-center rounded-xl p-6 font-custom font-bold text-xl"> Base
                     <div
-                        class="flex flex-col h-700px w-80 bg-rojo rounded-xl shadow-lg shadow-black items-center justify-center">
+                        class="flex flex-col h-700px w-80 bg-morado rounded-xl shadow-lg shadow-black items-center justify-center">
                         <hr class="text-black w-full">
                         <h3 class="text-center font-bold text-2xl mt-2">Altura</h3>
                         <h4 class="text-left font-normal mb-2">

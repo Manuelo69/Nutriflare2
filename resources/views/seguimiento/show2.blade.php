@@ -5,6 +5,12 @@
         </h2>
 
     </x-slot>
+    @if (session('success'))
+        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+            {{ session('success') }}
+        </div>
+    @endif
+
     @if ($errors->any())
         <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
             <strong class="font-bold">¡Ups! Hubo algunos problemas con tu entrada.</strong>
@@ -21,7 +27,7 @@
                 <!-- Formulario de crear objetivo -->
                 <legend class="text-center rounded-xl p-6 font-custom font-bold text-xl ">Ultimo Seguimiento
                     <div
-                        class="flex flex-col h-700px w-80 bg-rojo rounded-xl shadow-lg shadow-black items-center justify-center">
+                        class="flex flex-col h-700px w-80 bg-morado rounded-xl shadow-lg shadow-black items-center justify-center">
                         <h3 class="text-left font-bold text-2xl mt-2">Altura</h3>
                         <h4 class="text-left font-normal mb-2">
                             {{ $ultimoSeguimiento ? $ultimoSeguimiento->altura : 'Sin definir' }}

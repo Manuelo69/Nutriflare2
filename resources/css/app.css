@@ -10,7 +10,7 @@
 }
 
 .boton-progreso {
-    @apply bg-red-400 mt-3 hover:bg-red-800 border-2 border-white shadow-lg text-white font-bold py-3 px-4 rounded-xl mx-3 ;
+    @apply bg-purple-400 mt-3 hover:bg-purple-800 border-2 border-white shadow-lg text-white font-bold py-3 px-4 rounded-xl mx-3 ;
 }
 
 .link_inicio{

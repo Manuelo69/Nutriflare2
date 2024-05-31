@@ -20,7 +20,8 @@ export default {
             colors: {
                 'azul': '#1A94D6',
                 'verde': '#43D32D',
-                'rojo': '#FF4B3E'
+                'rojo': '#FF4B3E',
+                'morado': '#7E44D8'
             },
             height: {
                 '750px': '600px',
