@@ -117,5 +117,4 @@ return array(
     'BaconQrCode\\' => array($vendorDir . '/bacon/bacon-qr-code/src'),
     'ArchTech\\Enums\\' => array($vendorDir . '/archtechx/enums/src'),
     'App\\' => array($baseDir . '/app', $vendorDir . '/laravel/pint/app'),
-    'Amendozaaguiar\\LaravelLatEs\\' => array($vendorDir . '/amendozaaguiar/laravel-lat-es/src'),
 );

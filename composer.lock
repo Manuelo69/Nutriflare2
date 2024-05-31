@@ -4,72 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "62c06ff9ceb7e1ed4917b73c9efee3db",
+    "content-hash": "f500751f28cfb283036957ccb1e8c889",
     "packages": [
-        {
-            "name": "amendozaaguiar/laravel-lat-es",
-            "version": "11.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/amendozaaguiar/laravel-lat-es.git",
-                "reference": "5fd358acb8825bf9c81d5bbf32bc8eb5ee610889"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/amendozaaguiar/laravel-lat-es/zipball/5fd358acb8825bf9c81d5bbf32bc8eb5ee610889",
-                "reference": "5fd358acb8825bf9c81d5bbf32bc8eb5ee610889",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/console": ">=5.4.0",
-                "illuminate/support": ">=5.4.0",
-                "php": ">=5.6"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Amendozaaguiar\\LaravelLatEs\\LaravelLatEsServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Amendozaaguiar\\LaravelLatEs\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Anderson Mendoza",
-                    "role": "Developer"
-                }
-            ],
-            "description": "El paquete 'laravel-lat-es' ofrece traducciones en español para Laravel, garantizando que tus proyectos en Laravel tengan archivos de traducción en español por defecto. Con esta integración automática, podrás disfrutar de una experiencia de usuario más fluida y personalizada en tus aplicaciones de Laravel. Al utilizar las traducciones por defecto de Laravel, garantizas la coherencia y consistencia del idioma en toda tu aplicación, lo que mejora la usabilidad y la accesibilidad para tus usuarios hispanohablantes.",
-            "homepage": "https://github.com/amendozaaguiar/laravel-lat-es",
-            "keywords": [
-                "Automatico",
-                "Espanol",
-                "Integración",
-                "coherencia",
-                "desarrollo web",
-                "experiencia de usuario",
-                "idioma",
-                "laravel",
-                "localización",
-                "paquete",
-                "traduccion",
-                "usabilidad"
-            ],
-            "support": {
-                "issues": "https://github.com/amendozaaguiar/laravel-lat-es/issues",
-                "source": "https://github.com/amendozaaguiar/laravel-lat-es/tree/11.0.0"
-            },
-            "time": "2024-03-22T01:16:58+00:00"
-        },
         {
             "name": "amendozaaguiar/laraveles-spanish-for-jetstream",
             "version": "1.7.0",
@@ -1494,16 +1430,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v11.9.1",
+            "version": "v11.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "60167ce91c59ed5eea2ad4f2a7b6d686fb103ba7"
+                "reference": "2b3e8d75f10b0ed17416282946355dc026bf326c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/60167ce91c59ed5eea2ad4f2a7b6d686fb103ba7",
-                "reference": "60167ce91c59ed5eea2ad4f2a7b6d686fb103ba7",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/2b3e8d75f10b0ed17416282946355dc026bf326c",
+                "reference": "2b3e8d75f10b0ed17416282946355dc026bf326c",
                 "shasum": ""
             },
             "require": {
@@ -1695,7 +1631,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2024-05-28T18:16:41+00:00"
+            "time": "2024-05-30T09:40:11+00:00"
         },
         {
             "name": "laravel/jetstream",
@@ -9904,5 +9840,5 @@
         "php": "^8.2"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
