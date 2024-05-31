@@ -1,1 +1,1 @@
-<img src="{{ asset('assets/imagenes/logoNutriflare.png') }}" alt="NutriflareLogo" class="h-16">
+<img src="{{ asset('assets/imagenes/logoNutriflare.png') }}" alt="NutriflareLogo" class="h-24">

@@ -63,7 +63,7 @@
 
                 </legend>
                 @if ($ultimoSeguimientoBase != null && $ultimoSeguimientoObjetivo != null)
-                    <legend class="text-center rounded-xl p-6 font-custom font-bold text-xl"> Nuevo
+                    <legend class="text-center rounded-xl p-6 font-custom font-bold text-xl"> Nuevo seguimiento
                         <div class="flex flex-col items-center h-700px w-80 bg-rojo rounded-xl shadow-lg shadow-black">
 
                             <form action="{{ route('seguimiento.calculo', ['user' => Auth::user()]) }}"
@@ -101,7 +101,7 @@
                     </legend>
                 @endif
 
-                <legend class="text-center rounded-xl p-6 font-custom font-bold text-xl"> Definir base
+                <legend class="text-center rounded-xl p-6 font-custom font-bold text-xl"> Base
                     <div
                         class="flex flex-col h-700px w-80 bg-rojo rounded-xl shadow-lg shadow-black items-center justify-center">
                         <h3 class="text-center font-bold text-2xl mt-2">Altura</h3>
