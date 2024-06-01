@@ -17,13 +17,19 @@
         </div>
     @endif
 
+    @if (session('success'))
+        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+            {{ session('success') }}
+        </div>
+    @endif
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-6">
                 <div class="flex flex-wrap justify-center mb-4 space-x-1 space-y-1 sm:space-x-2 sm:space-y-0">
                     @foreach (['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo'] as $dia)
                         <a href="{{ route('rutina.show', ['user' => $user->name, 'rutina' => $dia]) }}"
-                            class="px-4 py-2 bg-azul hover:bg-blue-700 text-gray-700 rounded {{ $dia_semana === $dia ? 'bg-blue-500 text-white' : '' }}">
+                            class="px-4 py-2 bg-azul hover:bg-black text-white rounded {{ $dia_semana === $dia ? 'bg-blue-500 text-white' : '' }}">
                             {{ ucfirst($dia) }}
                         </a>
                     @endforeach

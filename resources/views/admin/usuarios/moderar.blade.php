@@ -117,8 +117,8 @@
                             <div class="flex justify-end space-x-4">
                                 <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded-md"
                                     onclick="closeEmailModal()">Salir</button>
-                                <button type="submit"
-                                    class="bg-blue-500 text-white px-4 py-2 rounded-md">Enviar</button>
+                                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md"
+                                    onclick="closeEmailModal()">Enviar</button>
                             </div>
                         </form>
                     </div>

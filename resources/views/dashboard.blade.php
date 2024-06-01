@@ -26,7 +26,8 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg flex flex-row gap-8 p-5">
                 <legend class="text-center rounded-xl p-6 font-custom font-bold text-xl ">Rutinas
-                    <div class="flex flex-col justify-evenly  h-750px w-80 bg-azul rounded-xl shadow-lg shadow-black">
+                    <div
+                        class="flex flex-col justify-evenly  h-750px w-80 bg-azul rounded-xl opacity-80 shadow-lg shadow-black">
                         <a href="{{ route('rutina.create') }}" class="link_inicio">Crear rutina</a>
                         <hr>
                         <a class="link_inicio"
@@ -41,7 +42,8 @@
                     </div>
                 </legend>
                 <legend class="text-center rounded-xl p-6 font-custom font-bold text-xl"> Progresion
-                    <div class="flex flex-col justify-evenly h-750px w-80 bg-morado rounded-xl shadow-lg shadow-black">
+                    <div
+                        class="flex flex-col justify-evenly h-750px w-80 bg-morado opacity-80 rounded-xl shadow-lg shadow-black">
                         <a href={{ route('seguimiento.index', ['user' => Auth::user()]) }} class="link_inicio">Definir
                             progreso</a>
                         <hr>
@@ -53,7 +55,8 @@
                     </div>
                 </legend>
                 <legend class="text-center rounded-xl p-6 font-custom font-bold text-xl"> Alimentacion
-                    <div class= "flex flex-col justify-evenly  h-750px w-80 bg-verde rounded-xl shadow-lg shadow-black">
+                    <div
+                        class= "flex flex-col justify-evenly  h-750px w-80 bg-verde opacity-80 rounded-xl shadow-lg shadow-black">
 
                         <p class="link_inicio">Proximamente</p>
                     </div>

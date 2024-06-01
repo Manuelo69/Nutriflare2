@@ -77,10 +77,9 @@ class RutinaController extends Controller
             ]);
         }
 
-        return redirect()->route('rutina.show', ['user' => auth()->user()->name, 'rutina' => $request->diaSemana]);
+        return redirect()->route('rutina.show', ['user' => auth()->user()->name, 'rutina' => $request->diaSemana])
+            ->with('success', 'Rutina del dia ' . $request->diaSemana . ' creada correctamente');
     }
-
-
 
 
     /**
@@ -137,7 +136,8 @@ class RutinaController extends Controller
             ]);
         }
 
-        return redirect()->route('rutina.show', ['user' => auth()->user()->name, 'rutina' => $request->diaSemana]);
+        return redirect()->route('rutina.show', ['user' => auth()->user()->name, 'rutina' => $request->diaSemana])
+            ->with('success', 'Rutina del dia ' . $request->diaSemana . ' modificada correctamente');
     }
 
 

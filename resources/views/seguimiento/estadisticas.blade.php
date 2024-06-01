@@ -17,9 +17,9 @@
                     </div>
                 </div>
                 <div class="bg-white p-4 rounded-lg shadow">
-                    <h2 class="text-xl font-semibold mb-4 text-center">Altura</h2>
+                    <h2 class="text-xl font-semibold mb-4 text-center">Minutos cardio</h2>
                     <div class="h-64">
-                        <canvas id="alturaChart"></canvas>
+                        <canvas id="cardioChart"></canvas>
                     </div>
                 </div>
                 <div class="bg-white p-4 rounded-lg shadow">
@@ -43,7 +43,7 @@
             const labels = seguimientos.map(s => new Date(s.created_at).toLocaleDateString());
 
             const pesoData = seguimientos.map(s => s.peso);
-            const alturaData = seguimientos.map(s => s.altura);
+            const cardioData = seguimientos.map(s => s.minutos_cardio);
             const grasaCorporalData = seguimientos.map(s => s.grasa_corporal);
             const progresoData = seguimientos.map(s => s.porcentaje_progreso);
 
@@ -72,7 +72,7 @@
 
             new Chart(document.getElementById('pesoChart').getContext('2d'), config('Peso', pesoData, 'rgba(54, 162, 235, 0.2)',
                 'rgba(54, 162, 235, 1)'));
-            new Chart(document.getElementById('alturaChart').getContext('2d'), config('Altura', alturaData,
+            new Chart(document.getElementById('cardioChart').getContext('2d'), config('Minutos cardio', cardioData,
                 'rgba(75, 192, 192, 0.2)', 'rgba(75, 192, 192, 1)'));
             new Chart(document.getElementById('grasaCorporalChart').getContext('2d'), config('Grasa Corporal',
                 grasaCorporalData, 'rgba(255, 99, 132, 0.2)', 'rgba(255, 99, 132, 1)'));
