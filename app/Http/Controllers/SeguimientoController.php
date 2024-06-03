@@ -13,10 +13,13 @@ class SeguimientoController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $ultimoSeguimientoBase = Seguimiento::where('tipo', 'base')
+        $userId = auth()->user()->id;
+        $ultimoSeguimientoBase = Seguimiento::where('user_id', $userId)->
+            where('tipo', 'base')
             ->orderByDesc('created_at')
             ->first();
-        $ultimoSeguimientoObjetivo = Seguimiento::where('tipo', 'objetivo')
+        $ultimoSeguimientoObjetivo = Seguimiento::where('user_id', $userId)->
+            where('tipo', 'objetivo')
             ->orderByDesc('created_at')
             ->first();
         return view('seguimiento.index', ['user' => $user, 'ultimoSeguimientoObjetivo' => $ultimoSeguimientoObjetivo, 'ultimoSeguimientoBase' => $ultimoSeguimientoBase]);
@@ -24,10 +27,12 @@ class SeguimientoController extends Controller
 
     public function create()
     {
-        $ultimoSeguimientoBase = Seguimiento::where('tipo', 'base')
+        $userId = auth()->user()->id;
+        $ultimoSeguimientoBase = Seguimiento::where('user_id', $userId)->where('tipo', 'base')
             ->orderByDesc('created_at')
             ->first();
-        $ultimoSeguimientoObjetivo = Seguimiento::where('tipo', 'objetivo')
+        $ultimoSeguimientoObjetivo = Seguimiento::where('user_id', $userId)->
+            where('tipo', 'objetivo')
             ->orderByDesc('created_at')
             ->first();
         return view('seguimiento.create', ['ultimoSeguimientoObjetivo' => $ultimoSeguimientoObjetivo, 'ultimoSeguimientoBase' => $ultimoSeguimientoBase]);
@@ -74,13 +79,16 @@ class SeguimientoController extends Controller
      */
     public function calcularProgreso(SeguimientoRequest $seguimiento)
     {
+        $userId = auth()->user()->id;
         // Obtener el último seguimiento base
-        $ultimoSeguimientoBase = Seguimiento::where('tipo', 'base')
+        $ultimoSeguimientoBase = Seguimiento::where('user_id', $userId)
+            ->where('tipo', 'base')
             ->orderByDesc('created_at')
             ->first();
 
         // Obtener el último seguimiento objetivo
-        $ultimoSeguimientoObjetivo = Seguimiento::where('tipo', 'objetivo')
+        $ultimoSeguimientoObjetivo = Seguimiento::where('user_id', $userId)->
+            where('tipo', 'objetivo')
             ->orderByDesc('created_at')
             ->first();
 
@@ -156,8 +164,9 @@ class SeguimientoController extends Controller
 
     function show2()
     {
+        $userId = auth()->user()->id;
         $user = auth()->user();
-        $ultimoSeguimiento = Seguimiento::where('tipo', 'seguimiento')
+        $ultimoSeguimiento = Seguimiento::where('user_id', $userId)->where('tipo', 'seguimiento')
             ->orderByDesc('created_at')
             ->first();
         return view('seguimiento.show2', ['user' => $user, 'ultimoSeguimiento' => $ultimoSeguimiento]);
