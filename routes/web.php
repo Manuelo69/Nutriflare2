@@ -10,29 +10,29 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [InicioController::class, 'inicio']);
 
 // Rutas de seguimiento
-Route::get('/seguimiento/{user}', [SeguimientoController::class, 'index'])->name('seguimiento.index');
-Route::get('/seguimiento/{user}/crear', [SeguimientoController::class, 'create'])->name('seguimiento.create');
-Route::get('/seguimiento/{user}/total', [SeguimientoController::class, 'show'])->name('seguimiento.show');
-Route::get('/seguimiento/{user}/ultimoSeguimiento', [SeguimientoController::class, 'show2'])->name('seguimiento.show2');
-Route::get('/seguimiento/{user}/editar', [SeguimientoController::class, 'edit'])->name('seguimiento.edit');
-Route::post('/seguimiento/{user}/', [SeguimientoController::class, 'store'])->name('seguimiento.store');
-Route::post('/seguimiento/{user}/crear', [SeguimientoController::class, 'calcularProgreso'])->name('seguimiento.calculo');
-Route::get('/estadisticas', [SeguimientoController::class, 'mostrarEstadisticas'])->name('seguimiento.estadisticas');
+Route::get('/seguimiento/{user}', [SeguimientoController::class, 'index'])->name('seguimiento.index')->middleware('auth');
+Route::get('/seguimiento/{user}/crear', [SeguimientoController::class, 'create'])->name('seguimiento.create')->middleware('auth');
+Route::get('/seguimiento/{user}/total', [SeguimientoController::class, 'show'])->name('seguimiento.show')->middleware('auth');
+Route::get('/seguimiento/{user}/ultimoSeguimiento', [SeguimientoController::class, 'show2'])->name('seguimiento.show2')->middleware('auth');
+Route::get('/seguimiento/{user}/editar', [SeguimientoController::class, 'edit'])->name('seguimiento.edit')->middleware('auth');
+Route::post('/seguimiento/{user}/', [SeguimientoController::class, 'store'])->name('seguimiento.store')->middleware('auth');
+Route::post('/seguimiento/{user}/crear', [SeguimientoController::class, 'calcularProgreso'])->name('seguimiento.calculo')->middleware('auth');
+Route::get('/estadisticas', [SeguimientoController::class, 'mostrarEstadisticas'])->name('seguimiento.estadisticas')->middleware('auth');
 
 
 // Rutas de ejercicios
-Route::get('/ejercicio/subir', [EjercicioController::class, 'create'])->name('ejercicio.create');
-Route::post('/ejercicio/guardar', [EjercicioController::class, 'store'])->name('ejercicio.store');
-Route::get('/ejercicio/{id}', [EjercicioController::class, 'show'])->name('ejercicio.show');
+Route::get('/ejercicio/subir', [EjercicioController::class, 'create'])->name('ejercicio.create')->middleware('auth');
+Route::post('/ejercicio/guardar', [EjercicioController::class, 'store'])->name('ejercicio.store')->middleware('auth');
+Route::get('/ejercicio/{id}', [EjercicioController::class, 'show'])->name('ejercicio.show')->middleware('auth');
 
 // Rutas de rutinas
-Route::get('/rutina/{id}/editar', [RutinaController::class, 'edit'])->name('rutina.edit');
-Route::get('/rutina/{id}/exportar-pdf', [RutinaController::class, 'exportarPDF'])->name('rutina.exportar-pdf');
-Route::put('/rutina/{id}', [RutinaController::class, 'update'])->name('rutina.update');
-Route::get('/rutina/crear', [RutinaController::class, 'create'])->name('rutina.create');
-Route::post('/rutina/guardar', [RutinaController::class, 'store'])->name('rutina.store');
-Route::get('/rutinas/crear/filtrar', [RutinaController::class, 'filtrar'])->name('rutina.filtrar');
-Route::get('/ejercicio/{user}/rutina/{rutina}', [RutinaController::class, 'show'])->name('rutina.show');
+Route::get('/rutina/{id}/editar', [RutinaController::class, 'edit'])->name('rutina.edit')->middleware('auth');
+Route::get('/rutina/{id}/exportar-pdf', [RutinaController::class, 'exportarPDF'])->name('rutina.exportar-pdf')->middleware('auth');
+Route::put('/rutina/{id}', [RutinaController::class, 'update'])->name('rutina.update')->middleware('auth');
+Route::get('/rutina/crear', [RutinaController::class, 'create'])->name('rutina.create')->middleware('auth');
+Route::post('/rutina/guardar', [RutinaController::class, 'store'])->name('rutina.store')->middleware('auth');
+Route::get('/rutinas/crear/filtrar', [RutinaController::class, 'filtrar'])->name('rutina.filtrar')->middleware('auth');
+Route::get('/ejercicio/{user}/rutina/{rutina}', [RutinaController::class, 'show'])->name('rutina.show')->middleware('auth');
 
 
 
