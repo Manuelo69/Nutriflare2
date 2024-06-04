@@ -85,14 +85,18 @@
                 @endif
             @endif
         </div>
-        <div class="col-span-6 sm:col-span-4">
+
+        <!-- Fase Corporal -->
+        {{-- <div class="col-span-6 sm:col-span-4">
             <x-label for="fase_corporal" value="{{ __('Fase corporal') }}" />
-            <select name="fase_corporal" id="fase_corporal" class="block mt-1 w-full">
+            <select id="fase_corporal" class="block mt-1 w-full" wire:model="state.fase_corporal">
                 <option value="Definicion">Definicion</option>
                 <option value="Volumen">Volumen</option>
                 <option value="Recomposicion">Recomposicion corporal</option>
             </select>
-        </div>
+            <x-input-error for="fase_corporal" class="mt-2" />
+        </div> --}}
+
 
     </x-slot>
 
