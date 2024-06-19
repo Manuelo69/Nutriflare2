@@ -73,11 +73,19 @@
                                             {{ ucfirst($usuario->fase_corporal) }}</td>
                                         <td class="px-6 py-4 border-b border-gray-200">{{ $usuario->email }}</td>
                                         <td class="px-6 py-4 border-b border-gray-200">
-                                            <button class="bg-red-500 text-white px-4 py-2 rounded-md"
-                                                onclick="deleteUser({{ $usuario->id }})">Eliminar</button>
-                                            <button class="bg-blue-500 text-white px-4 py-2 rounded-md"
-                                                onclick="openEmailModal('{{ $usuario->email }}')">Enviar
-                                                Correo</button>
+                                            <div class="flex space-x-4">
+                                                <form action="{{ route('admin.usuarios.eliminar', $usuario->id) }}"
+                                                    method="POST"
+                                                    onsubmit="return confirm('¿Estás seguro de que deseas eliminar este usuario?');">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit"
+                                                        class="bg-red-500 text-white px-4 py-2 rounded-md">Eliminar</button>
+                                                </form>
+                                                <button class="bg-blue-500 text-white px-4 py-2 rounded-md"
+                                                    onclick="openEmailModal('{{ $usuario->email }}')">Enviar
+                                                    Correo</button>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach
